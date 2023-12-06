@@ -12,21 +12,37 @@ export interface SmallBoxProps {
 
 const SmallBox = ({
   type = 'info',
-  icon = 'ion-bag',
+  icon = 'ion-stats-bars',
   count,
   title,
   navigateTo
 }: SmallBoxProps) => {
   const [t] = useTranslation();
 
+/*
+  const mudançaDeStatus = () => {
+    let estadoAtualizado = type;
+
+    if (count < 50) {
+      estadoAtualizado = 'warning';
+    } else if (count < 25) {
+      estadoAtualizado = 'danger';
+    } else {
+      estadoAtualizado = 'success';
+    }
+    return estadoAtualizado;
+  }
+  */
   return (
     <div className={`small-box bg-${type}`}>
       <div className="inner">
-        <h3>{count}</h3>
+        <h3>
+          {count}<sup style={{fontSize: '20px'}}>%</sup>
+        </h3>
         <p>{title}</p>
       </div>
       <div className="icon">
-        <i className={`ion ${icon || 'ion-bag'}`} />
+        <i className={`ion ${icon}`}/>
       </div>
       <Link to={navigateTo} className="small-box-footer">
         <span className="mr-2">{t<string>('main.label.moreInfo')}</span>
