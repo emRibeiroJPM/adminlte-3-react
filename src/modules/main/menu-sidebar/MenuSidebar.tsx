@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import {useSelector} from 'react-redux';
 import {Link} from 'react-router-dom';
 import {MenuItem} from '@components';
 import {PfImage} from '@profabric/react-components';
 import styled from 'styled-components';
 import {SidebarSearch} from '@app/components/sidebar-search/SidebarSearch';
-import i18n from '@app/utils/i18n';
+
 
 export interface IMenuItem {
   name: string;
@@ -16,29 +16,56 @@ export interface IMenuItem {
 
 export const MENU: IMenuItem[] = [
   {
-    name: i18n.t('menusidebar.label.dashboard'),
+    name: 'Dados Gerais',
     icon: 'fas fa-tachometer-alt nav-icon',
     path: '/'
   },
   {
-    name: i18n.t('menusidebar.label.blank'),
-    icon: 'fas fa-wrench nav-icon',
-    path: '/blank'
-  },
-  {
-    name: i18n.t('menusidebar.label.mainMenu'),
-    icon: 'far fa-caret-square-down nav-icon',
+    name: 'Secções de Produção',
+    icon: 'fas fa-industry nav-icon',
     children: [
       {
-        name: i18n.t('menusidebar.label.subMenu'),
-        icon: 'fas fa-hammer nav-icon',
-        path: '/sub-menu-1'
+        name: 'Secção 1',
+        icon: 'fas fa-cogs nav-icon',
+        path: '/primeira-seccao'
+      },
+      
+      {
+        name: 'Secção 2',
+        icon: 'fas fa-cogs nav-icon',
+        path: '/segunda-seccao'
       },
 
       {
-        name: i18n.t('menusidebar.label.blank'),
+        name: 'Secção 3',
         icon: 'fas fa-cogs nav-icon',
-        path: '/sub-menu-2'
+        path: '/terceira-seccao'
+      }
+    ]
+  },
+  {
+    name: 'Utilizadores',
+    icon: 'fas fa-users nav-icon',
+    children:[
+      {
+        name: 'Utilizador 1',
+        icon: 'fas fa-user nav-icon',
+        path: '/utilizador-1'
+      },
+      {
+        name: 'Utilizador 2',
+        icon: 'fas fa-user nav-icon',
+        path: '/utilizador-2'
+      },
+      {
+        name: 'Utilizador 3',
+        icon: 'fas fa-user nav-icon',
+        path: '/utilizador-3'
+      },
+      {
+        name: 'Administador',
+        icon: 'fas fa-user-cog nav-icon',
+        path: '/administrador'
       }
     ]
   }
@@ -67,13 +94,13 @@ const MenuSidebar = () => {
     <aside className={`main-sidebar elevation-4 ${sidebarSkin}`}>
       <Link to="/" className="brand-link">
         <StyledBrandImage
-          src="/img/logo.png"
-          alt="AdminLTE Logo"
-          width={33}
+          src="/img/jpm logo.png"
+          alt="JPM Logo"
+          width={80}
           height={33}
-          rounded
+
         />
-        <span className="brand-text font-weight-light">AdminLTE 3</span>
+        <span className="brand-text font-weight-light">EgiBoard</span>
       </Link>
       <div className="sidebar">
         <div className="user-panel mt-3 pb-3 mb-3 d-flex">

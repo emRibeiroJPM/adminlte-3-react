@@ -2,10 +2,10 @@
 import React from 'react';
 import {ContentHeader} from '@components';
 
-const SubMenu = () => {
+const Secção3 = () => {
   return (
     <div>
-      <ContentHeader title="SubMenu Page" />
+      <ContentHeader title="Terceira Secção da Fábrica" />
       <section className="content">
         <div className="container-fluid">
           <div className="card">
@@ -43,4 +43,4 @@ const SubMenu = () => {
   );
 };
 
-export default SubMenu;
+export default Secção3;

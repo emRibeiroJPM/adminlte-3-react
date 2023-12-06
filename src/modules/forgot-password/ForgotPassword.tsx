@@ -32,8 +32,7 @@ const ForgotPassword = () => {
       <div className="card card-outline card-primary">
         <div className="card-header text-center">
           <Link to="/" className="h1">
-            <b>Admin</b>
-            <span>LTE</span>
+            <b>EgiBoard</b>
           </Link>
         </div>
         <div className="card-body">

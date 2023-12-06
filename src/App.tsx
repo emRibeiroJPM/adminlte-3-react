@@ -13,8 +13,17 @@ import { setWindowSize } from '@app/store/reducers/ui';
 
 import Dashboard from '@pages/Dashboard';
 import Blank from '@pages/Blank';
-import SubMenu from '@pages/SubMenu';
 import Profile from '@pages/profile/Profile';
+
+import Secção1 from '@pages/Secção1';
+import Secção2 from '@pages/Secção2';
+import Secção3 from '@pages/Secção3';
+
+import Utilizador1 from '@pages/Utilizador1';
+import Utilizador2 from '@pages/Utilizador2';
+import Utilizador3 from '@pages/Utilizador3';
+
+import Administrador from '@pages/Administrador';
 
 import PublicRoute from './routes/PublicRoute';
 import PrivateRoute from './routes/PrivateRoute';
@@ -22,7 +31,6 @@ import { setAuthentication } from './store/reducers/auth';
 import {
   GoogleProvider,
   getAuthStatus,
-  getFacebookLoginStatus,
 } from './utils/oidc-providers';
 
 declare const FB: any;
@@ -36,7 +44,6 @@ const App = () => {
   const checkSession = async () => {
     try {
       let responses: any = await Promise.all([
-        getFacebookLoginStatus(),
         GoogleProvider.getUser(),
         getAuthStatus(),
       ]);
@@ -84,8 +91,13 @@ const App = () => {
         </Route>
         <Route path="/" element={<PrivateRoute />}>
           <Route path="/" element={<Main />}>
-            <Route path="/sub-menu-2" element={<Blank />} />
-            <Route path="/sub-menu-1" element={<SubMenu />} />
+            <Route path="/primeira-seccao" element={<Secção1 />} />
+            <Route path="/segunda-seccao" element={<Secção2 />} />
+            <Route path="/terceira-seccao" element={<Secção3 />} />
+            <Route path="/utilizador-1" element={<Utilizador1 />} />
+            <Route path="/utilizador-2" element={<Utilizador2 />} />
+            <Route path="/utilizador-3" element={<Utilizador3 />} />
+            <Route path="/administrador" element={<Administrador />} />
             <Route path="/blank" element={<Blank />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/" element={<Dashboard />} />

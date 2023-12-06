@@ -29,6 +29,7 @@
     ]
   },
   "dependencies": {
+    "@ant-design/charts": "^1.4.3",
     "@fortawesome/fontawesome-svg-core": "6.4.0",
     "@fortawesome/free-brands-svg-icons": "6.4.0",
     "@fortawesome/free-regular-svg-icons": "6.4.0",
@@ -49,6 +50,7 @@
     "react-bootstrap": "1.6.1",
     "react-dom": "0.0.0-experimental-c8369527e-20230420",
     "react-i18next": "12.2.0",
+    "react-icons": "^4.12.0",
     "react-redux": "8.0.5",
     "react-router-dom": "6.10.0",
     "react-scripts": "5.0.1",

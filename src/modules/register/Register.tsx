@@ -13,14 +13,12 @@ import { PfButton, PfCheckbox } from '@profabric/react-components';
 import {
   GoogleProvider,
   authLogin,
-  facebookLogin,
 } from '@app/utils/oidc-providers';
 import { setAuthentication } from '@app/store/reducers/auth';
 
 const Register = () => {
   const [isAuthLoading, setAuthLoading] = useState(false);
   const [isGoogleAuthLoading, setGoogleAuthLoading] = useState(false);
-  const [isFacebookAuthLoading, setFacebookAuthLoading] = useState(false);
   const [t] = useTranslation();
   const dispatch = useDispatch();
 
@@ -53,19 +51,6 @@ const Register = () => {
     }
   };
 
-  const registerByFacebook = async () => {
-    try {
-      setFacebookAuthLoading(true);
-      const response = await facebookLogin();
-      dispatch(setAuthentication(response as any));
-      setFacebookAuthLoading(false);
-      navigate('/');
-    } catch (error: any) {
-      setFacebookAuthLoading(false);
-      toast.error(error.message || 'Failed');
-    }
-  };
-
   const { handleChange, values, handleSubmit, touched, errors } = useFormik({
     initialValues: {
       email: '',
@@ -95,8 +80,7 @@ const Register = () => {
       <div className="card card-outline card-primary">
         <div className="card-header text-center">
           <Link to="/" className="h1">
-            <b>Admin</b>
-            <span>LTE</span>
+            <b>EgiBoard</b>
           </Link>
         </div>
         <div className="card-body">
@@ -192,7 +176,7 @@ const Register = () => {
                   type="submit"
                   block
                   loading={isAuthLoading}
-                  disabled={isGoogleAuthLoading || isFacebookAuthLoading}
+                  disabled={isGoogleAuthLoading}
                 >
                   {t<string>('register.label')}
                 </PfButton>
@@ -202,22 +186,10 @@ const Register = () => {
           <div className="social-auth-links text-center">
             <PfButton
               block
-              className="mb-2"
-              onClick={registerByFacebook}
-              loading={isFacebookAuthLoading}
-              disabled={isAuthLoading || isGoogleAuthLoading}
-            >
-              <i className="fab fa-facebook mr-2" />
-              {t<string>('login.button.signIn.social', {
-                what: 'Facebook',
-              })}
-            </PfButton>
-            <PfButton
-              block
               theme="danger"
               onClick={registerByGoogle}
               loading={isGoogleAuthLoading}
-              disabled={isAuthLoading || isFacebookAuthLoading}
+              disabled={isAuthLoading}
             >
               <i className="fab fa-google mr-2" />
               {t<string>('login.button.signUp.social', { what: 'Google' })}

@@ -3,7 +3,6 @@ import {Link} from 'react-router-dom';
 import {useTranslation} from 'react-i18next';
 import {useDispatch, useSelector} from 'react-redux';
 import {toggleControlSidebar, toggleSidebarMenu} from '@app/store/reducers/ui';
-import MessagesDropdown from '@app/modules/main/header/messages-dropdown/MessagesDropdown';
 import NotificationsDropdown from '@app/modules/main/header/notifications-dropdown/NotificationsDropdown';
 import LanguagesDropdown from '@app/modules/main/header/languages-dropdown/LanguagesDropdown';
 import UserDropdown from '@app/modules/main/header/user-dropdown/UserDropdown';
@@ -16,10 +15,6 @@ const Header = () => {
 
   const handleToggleMenuSidebar = () => {
     dispatch(toggleSidebarMenu());
-  };
-
-  const handleToggleControlSidebar = () => {
-    dispatch(toggleControlSidebar());
   };
 
   const getContainerClasses = useCallback(() => {
@@ -54,19 +49,9 @@ const Header = () => {
         </li>
       </ul>
       <ul className="navbar-nav ml-auto">
-        <MessagesDropdown />
         <NotificationsDropdown />
         <LanguagesDropdown />
         <UserDropdown />
-        <li className="nav-item">
-          <button
-            type="button"
-            className="nav-link"
-            onClick={handleToggleControlSidebar}
-          >
-            <i className="fas fa-th-large" />
-          </button>
-        </li>
       </ul>
     </nav>
   );
