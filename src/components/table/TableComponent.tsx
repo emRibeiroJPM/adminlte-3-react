@@ -40,8 +40,8 @@ function TableComponent() {
                         <td>{index}</td>
                         <td>{valor.Date}</td>
                         <td>{valor.scales}</td>
-                        {}
-                        <td>Criar função para alerta</td>
+                        {valor.scales > 1500 ? <td>Criar função para alerta</td>: <td> </td>}
+                        
                     </tr>)})}           
             </tbody>
         </Table>)       
