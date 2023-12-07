@@ -34,7 +34,7 @@ function TableComponent() {
                 </tr>
             </thead>
             <tbody>
-                {data.map((valor,index)=>{
+                {data.map((valor,index)=>{if(valor.scales > 2000)
                 return(
                     <tr key={index}>
                         <td>{index}</td>
