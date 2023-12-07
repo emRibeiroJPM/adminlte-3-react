@@ -31,6 +31,7 @@
   "dependencies": {
     "@ant-design/charts": "^1.4.3",
     "@ant-design/plots": "^2.1.0",
+    "@emotion/react": "^11.11.1",
     "@fortawesome/fontawesome-svg-core": "6.4.0",
     "@fortawesome/free-brands-svg-icons": "6.4.0",
     "@fortawesome/free-regular-svg-icons": "6.4.0",
@@ -38,6 +39,7 @@
     "@fortawesome/react-fontawesome": "0.2.0",
     "@profabric/react-components": "0.1.7",
     "@reduxjs/toolkit": "1.9.5",
+    "@table-library/react-table-library": "^4.1.7",
     "@testing-library/jest-dom": "5.16.5",
     "@testing-library/react": "14.0.0",
     "@testing-library/user-event": "14.4.3",

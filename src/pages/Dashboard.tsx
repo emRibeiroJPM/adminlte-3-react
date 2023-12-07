@@ -1,13 +1,10 @@
 import {SmallBox} from '@app/components';
-import React from 'react';
 import {ContentHeader} from '@components';
 import LineChart from '@app/components/line-chart/LineChart';
+import TableComponent from '@app/components/table/TableComponent';
 
-interface DashboardStatus {
-  estado? : 'success' | 'warning' | 'danger';
-}
 
-const Dashboard = ({estado='success'} : DashboardStatus) => {
+const Dashboard = () => {
   return (
     <div>
       <ContentHeader title="Dashboard" />
@@ -52,7 +49,7 @@ const Dashboard = ({estado='success'} : DashboardStatus) => {
               </div>
             </div>
             <div className="card-body">
-              
+              <TableComponent/>
             </div>
           </div>
         </div>

@@ -1,10 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Line } from '@ant-design/plots';
 
-interface ChartConfig {
-
-}
-
 function LineChart() {
   
   const [data,setData] = useState([]);
