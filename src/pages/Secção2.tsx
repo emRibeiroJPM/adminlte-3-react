@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
 import {ContentHeader} from '@components';
+import GaugeComponent from '@app/components/gauge/GaugeComponent';
 
 const Secção1 = () => {
   return (
@@ -32,8 +33,12 @@ const Secção1 = () => {
                 </button>
               </div>
             </div>
-            <div className="card-body">
-            Introduzir informaçao relativa a segunda secçao
+            <div className="card-body" style={{display:"inline-flex", maxWidth:"100%"}}>
+              <div id='gaugeContainer' style={{display:"inline-flex",maxWidth:"100%"}}>
+                <GaugeComponent valorAtual={86}/>
+                <GaugeComponent valorAtual={35}/>
+                <GaugeComponent valorAtual={105}/>
+              </div>
             </div>
           </div>
         </div>

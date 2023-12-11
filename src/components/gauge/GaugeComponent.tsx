@@ -1,64 +1,95 @@
-import { Gauge } from "@ant-design/plots"
+import { Common, Gauge } from "@ant-design/plots"
+import {Cascader} from 'antd';
 
-interface gaugeProps {
-  percent: number,
-  type?: 'meter',
-  innerRadius: number,
-  range: {
-    ticks: number[],
-    color: string[],
-  },
-  indicator:{
-    pointer:{
-      style:{
-        stroke: string,
-      }
-    },
-    pin:{
-      style:string
-    },
-  },
-  statistic:{
-    content:{
-      style:{
-        fontSize: '36px',
-        lineHeight: '36px',
-      },
-    },
-  },
+interface Opcao {
+  value: string | number,
+  label: string,
+  children?: Opcao[];
 }
 
-function GaugeComponent({percent}:gaugeProps) {
-  
-  const config ={
-    percent: percent ,
-    type: 'meter',
-    innerRadius: 0.75,
-    range: {
-      ticks: [0,1/3,2/3,1],
-      color: ['#30BF78','#FAAD14','#F4664A',],
-    },
-    indicator:{
-      pointer:{
-        style:{
-          stroke: '#D0D0D0',
-        }
+const opcoes: Opcao[] = [
+  {
+    value: 'Seccao 1',
+    label: 'Seccao 1',
+    children:[
+      {
+        label:'Maquina 1',
+        value:'Maquina 1',
       },
-      pin:{
-        style: '#D0D0D0'
+      {
+        label:'Maquina 2',
+        value:'Maquina 2',
       },
-    },
-    statistic:{
-      content:{
-        style:{
-          fontSize: '36px',
-          lineHeight: '36px',
-        },
+      {
+        label:'Maquina 3',
+        value:'Maquina 3',
+      }
+    ]
+  },
+  {
+    value: 'Seccao 2',
+    label: 'Seccao 2',
+    children:[
+      {
+        label:'Maquina 1',
+        value:'Maquina 1',
       },
-    },
+      {
+        label:'Maquina 2',
+        value:'Maquina 2',
+      },
+    ]
+  },
+  {
+    value: 'Seccao 3',
+    label: 'Seccao 3',
+    children:[
+      {
+        label:'Maquina 1',
+        value:'Maquina 1',
+      },
+    ]
   }
+]
 
-  return <Gauge {...config}/>
+const onChange = (escolha : Opcao["value"]) =>{
+  console.log(escolha)
+}
+
+interface gaugeProps {
+  valorAtual: Common
+}
+
+function GaugeComponent({valorAtual}:gaugeProps) {
+  
+  const config = {
+    width: 400,
+    height: 400,
+    autoFit: false,
+    data: {
+      target: valorAtual,
+      total: 400,
+      name: 'score',
+      thresholds: [100, 200, 400],
+    },
+    legend: false,
+    scale: {
+      color: {
+        range: ['#F4664A', '#FAAD14', 'green'],
+      },
+    },
+    style: {
+      textContent: (target:any, total:any) => `Valor Atual: ${target}\n Percentagem: ${(target / total) * 100}%`,
+    },
+  };
+  return (<>
+    <div style={{display:"flex", flexDirection:"column",alignItems:"center"}}>
+      <Gauge {...config}/>´
+      <label style={{}}>Maquina a analisar</label>
+      <Cascader options={opcoes} onChange={onChange} placeholder="Escolha uma maquina" />
+    </div>
+  </>
+  );
 }
 
 export default GaugeComponent

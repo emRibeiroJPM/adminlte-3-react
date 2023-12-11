@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React from 'react';
 import {ContentHeader} from '@components';
 import TankLevel from '@app/components/tank-level-Indicator/TankLevel';
+
 
 const Secção1 = () => {
   return (
@@ -14,7 +14,7 @@ const Secção1 = () => {
               <h3 className="card-title">Status Gerais da Primeira Secção</h3>
             </div>
             <div className="card-body">
-              
+              <TankLevel percent={0.9}/>
             </div>
           </div>
         </div>
