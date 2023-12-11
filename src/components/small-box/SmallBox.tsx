@@ -1,6 +1,9 @@
-import React from 'react';
+import { useEffect } from 'react';
 import {Link} from 'react-router-dom';
 import {useTranslation} from 'react-i18next';
+import { useState } from 'react';
+import { toast, ToastContainer } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
 
 export interface SmallBoxProps {
   type: 'info' | 'success' | 'warning' | 'danger';
@@ -10,6 +13,7 @@ export interface SmallBoxProps {
   navigateTo: string;
 }
 
+
 const SmallBox = ({
   type = 'info',
   icon = 'ion-stats-bars',
@@ -18,23 +22,57 @@ const SmallBox = ({
   navigateTo
 }: SmallBoxProps) => {
   const [t] = useTranslation();
+  const [estado,setEstado] = useState('success');
 
-/*
-  const mudançaDeStatus = () => {
-    let estadoAtualizado = type;
-
-    if (count < 50) {
-      estadoAtualizado = 'warning';
-    } else if (count < 25) {
-      estadoAtualizado = 'danger';
-    } else {
-      estadoAtualizado = 'success';
+  
+  useEffect(()=>{
+    if(count <= 100){
+      setEstado('success');
     }
-    return estadoAtualizado;
-  }
-  */
+    if(count < 50 && count > 24){
+      setEstado('warning')
+      toast.warn(`A ${title} está numa condição anormal, tome as devidas precauções`, {
+        position: "top-right",
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+    })
+    }
+    if(count < 25){
+      setEstado('danger');
+      toast.error(`Alerta a ${title} está em estado grave, verifique a qual a anomalia!!`, {
+        position: "top-right",
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+    })
+      
+    }
+  },[count]);
+  
   return (
-    <div className={`small-box bg-${type}`}>
+    <>
+    <ToastContainer
+      position="top-right"
+      autoClose={5000}
+      hideProgressBar={false}
+      newestOnTop={false}
+      closeOnClick
+      rtl={false}
+      pauseOnFocusLoss
+      draggable
+      pauseOnHover
+      theme="light"
+      />
+      {}
+    <ToastContainer />
+    <div className={`small-box bg-${estado}`}>
       <div className="inner">
         <h3>
           {count}<sup style={{fontSize: '20px'}}>%</sup>
@@ -49,6 +87,7 @@ const SmallBox = ({
         <i className="fa fa-arrow-circle-right" />
       </Link>
     </div>
+    </>
   );
 };
 

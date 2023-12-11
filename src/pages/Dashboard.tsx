@@ -18,10 +18,10 @@ const Dashboard = () => {
               <SmallBox type='success' count={100} title='Secção 2' navigateTo='/segunda-seccao'/>
             </div>
             <div className="col-lg-3 col-6">
-              <SmallBox type='success' count={100} title='Secção 3' navigateTo='/terceira-seccao' />
+              <SmallBox type='success' count={60} title='Secção 3' navigateTo='/terceira-seccao' />
             </div>
             <div className="col-lg-3 col-6">
-              <SmallBox type='success' count={100} title='Secção 4' navigateTo='/blank' />
+              <SmallBox type='success' count={70} title='Secção 4' navigateTo='/blank' />
             </div>
           </div>
         </div>

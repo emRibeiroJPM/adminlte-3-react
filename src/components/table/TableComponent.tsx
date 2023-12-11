@@ -1,21 +1,25 @@
 import Table from 'react-bootstrap/Table'
+import { MDBDataTable} from 'mdbreact'
 
 import { useEffect, useState } from 'react';
 
+
 interface TipoDeDados {
+
     Date: string,
     scales: number
+
 }
 
 function TableComponent() {
 
-    const [data, setData] = useState<TipoDeDados[]>([]);
+    const [dadosObtidos, setDadosObtidos] = useState<TipoDeDados[]>([]);
 
     const obtencaoDados = () =>{
         //dados do tipo Date,scale
         fetch('https://gw.alipayobjects.com/os/bmw-prod/1d565782-dde4-4bb6-8946-ea6a38ccf184.json')
             .then((response)=>response.json())
-            .then((json) => setData(json))
+            .then((json) => setDadosObtidos(json))
             .catch((error)=>{
                 console.log('falha na obtençao de dados',error);
             });
@@ -23,28 +27,25 @@ function TableComponent() {
         useEffect(()=>{
             obtencaoDados();
         },[]);
+
+        const data = {
+            columns:[
+                {
+                    label:'Date',
+                    field:'Date',
+                },
+                {
+                    label: 'Scales',
+                    field: 'scales',
+                }
+            ],
+            rows:dadosObtidos
+
+        }
       
-    return(<Table>
-            <thead>
-                <tr>
-                    <th>{null}</th>
-                    <th>Date</th>
-                    <th>scales</th>
-                    <th>Alert</th>
-                </tr>
-            </thead>
-            <tbody>
-                {data.map((valor,index)=>{if(valor.scales > 2000)
-                return(
-                    <tr key={index}>
-                        <td>{index}</td>
-                        <td>{valor.Date}</td>
-                        <td>{valor.scales}</td>
-                        {valor.scales > 500 ? <td>Criar função para alerta</td>: <td> </td> }  
-                    </tr>)})}           
-            </tbody>
-        </Table>)       
+    return(<MDBDataTable
+        striped
+        data={data}/>)       
 };
 
 export default TableComponent
-

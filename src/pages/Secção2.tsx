@@ -33,9 +33,8 @@ const Secção1 = () => {
               </div>
             </div>
             <div className="card-body">
-              Start creating your amazing application!
+            Introduzir informaçao relativa a segunda secçao
             </div>
-            <div className="card-footer">Footer</div>
           </div>
         </div>
       </section>
