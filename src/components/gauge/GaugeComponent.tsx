@@ -57,10 +57,11 @@ const onChange = (escolha : Opcao["value"]) =>{
 }
 
 interface gaugeProps {
-  valorAtual: Common
+  valorAtual: Common | number,
+  valorMaximo: Common | number
 }
 
-function GaugeComponent({valorAtual}:gaugeProps) {
+function GaugeComponent({valorAtual,valorMaximo}:gaugeProps) {
   
   const config = {
     width: 400,
@@ -68,24 +69,27 @@ function GaugeComponent({valorAtual}:gaugeProps) {
     autoFit: false,
     data: {
       target: valorAtual,
-      total: 400,
-      name: 'score',
-      thresholds: [100, 200, 400],
+      total: valorMaximo,
+      name: 'valor atual',
+      thresholds: [40, 80, 120],
     },
     legend: false,
     scale: {
       color: {
-        range: ['#F4664A', '#FAAD14', 'green'],
+        range: ['green','#FAAD14','#F4664A'],
       },
     },
     style: {
-      textContent: (target:any, total:any) => `Valor Atual: ${target}\n Percentagem: ${(target / total) * 100}%`,
+      textContent: (target:number, total:number) => `Valor Atual: ${target}\n Percentagem: ${((target / total) * 100).toPrecision(2)}%`,
     },
   };
   return (<>
-    <div style={{display:"flex", flexDirection:"column",alignItems:"center"}}>
-      <Gauge {...config}/>´
-      <label style={{}}>Maquina a analisar</label>
+    <div style={{display:"flex", flexDirection:"column",alignItems:"center",flexWrap:"wrap"}}>
+      <div style={{marginBottom:"-10vh", textAlign:"center"}}>
+          <h3 style={{marginBottom:"-2px",fontSize:"1.em"}}>Visor de Controlo</h3>
+        <Gauge {...config}/>
+      </div>
+      <p style={{marginBottom:"3%", fontSize:"1.125em"}}>Máquina a analisar</p>
       <Cascader options={opcoes} onChange={onChange} placeholder="Escolha uma maquina" />
     </div>
   </>

@@ -9,7 +9,7 @@ function TankLevel({percent}:TankProp) {
     const config = {
         percent: percent,
         style: {
-          outlineBorder: 4,
+          outlineBorder: 7,
           outlineDistance: 8,
           waveLength: 400,
         },

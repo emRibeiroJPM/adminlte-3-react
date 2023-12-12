@@ -1,9 +1,10 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React from 'react';
 import {ContentHeader} from '@components';
 import GaugeComponent from '@app/components/gauge/GaugeComponent';
+import FormularioSeccaoDois from '@app/components/form-component/formSeccao2';
+import CodigoQR from '@app/components/codigoQR/qrCode-component';
 
-const Secção1 = () => {
+const Secção2 = () => {
   return (
     <div>
       <ContentHeader title="Segunda Secção da Fábrica" />
@@ -11,33 +12,45 @@ const Secção1 = () => {
         <div className="container-fluid">
           <div className="card">
             <div className="card-header">
-              <h3 className="card-title">Title</h3>
-              <div className="card-tools">
-                <button
-                  type="button"
-                  className="btn btn-tool"
-                  data-widget="collapse"
-                  data-toggle="tooltip"
-                  title="Collapse"
-                >
-                  <i className="fa fa-minus" />
-                </button>
-                <button
-                  type="button"
-                  className="btn btn-tool"
-                  data-widget="remove"
-                  data-toggle="tooltip"
-                  title="Remove"
-                >
-                  <i className="fa fa-times" />
-                </button>
-              </div>
+              <h3 className="card-title">Formulário</h3>
+            </div>
+            <div className="card-body">
+                <div style={{flexDirection:"row",justifyContent:"center",}}>
+                  <div style={{}}>
+                    <FormularioSeccaoDois/>
+                  </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section className="content">
+        <div className="container-fluid">
+          <div className="card">
+            <div className="card-header">
+              <h3 className="card-title">Visores de Controlo</h3>
             </div>
             <div className="card-body" style={{display:"inline-flex", maxWidth:"100%"}}>
               <div id='gaugeContainer' style={{display:"inline-flex",maxWidth:"100%"}}>
-                <GaugeComponent valorAtual={86}/>
-                <GaugeComponent valorAtual={35}/>
-                <GaugeComponent valorAtual={105}/>
+                <GaugeComponent valorAtual={86} valorMaximo={120}/>
+                <GaugeComponent valorAtual={35} valorMaximo={120}/>
+                <GaugeComponent valorAtual={95} valorMaximo={120}/>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section className="content">
+        <div className="container-fluid">
+          <div className="card">
+            <div className="card-header">
+              <h3 className="card-title">Visores de Controlo</h3>
+            </div>
+            <div className="card-body" style={{display:"inline-flex", maxWidth:"100%"}}>
+              <div id='gaugeContainer' style={{display:"inline-flex",maxWidth:"100%"}}>
+                <GaugeComponent valorAtual={86} valorMaximo={120}/>
+                <GaugeComponent valorAtual={35} valorMaximo={120}/>
+                <GaugeComponent valorAtual={95} valorMaximo={120}/>
               </div>
             </div>
           </div>
@@ -47,4 +60,4 @@ const Secção1 = () => {
   );
 };
 
-export default Secção1;
+export default Secção2;
