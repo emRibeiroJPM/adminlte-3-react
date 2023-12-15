@@ -6,7 +6,6 @@ interface EscolherDataProps {
   Data : string[]
 }
 
-
 const { RangePicker } = DatePicker;
 
 const onChange = (
@@ -15,7 +14,6 @@ const onChange = (
 ) => {
   console.log('Selected Time: ', value);
   console.log('Formatted Selected Time: ', dateString);
-  /////ATUALIZARR AQUI A DATA
 };
 
 const onOk = (value: DatePickerProps['value'] | RangePickerProps['value']) => {
@@ -35,8 +33,3 @@ function EscolherData() {
 }
 
 export default EscolherData
-
-
-
-
-

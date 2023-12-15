@@ -134,7 +134,7 @@ const FormularioSeccaoDois = () => {
             <Cascader options={clientesFormulário}/>
           </Form.Item>
           <Form.Item label="Data" name={["Encomenda","data"]} rules={[]}>
-            <EscolherData/>
+            <EscolherData />
           </Form.Item>
           <Form.Item label="Produtos p/ Palete" name={["Encomenda","produtosPalete"]} rules={[{required:true,message:"Indique quantos produtos exitem por palete"}]}>
             <InputNumber />
