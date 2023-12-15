@@ -9,7 +9,7 @@ import {
   } from 'antd';
 import EscolherData from './date-picker';
 import CodigoQR from '../codigoQR/qrCode-component';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import ModalComponent from '../modal/ModalComponent';
   
 const referênciasFormulário = [
@@ -66,30 +66,38 @@ const clientesFormulário = [
   }
 ]
 
-let Encomenda = {
-  tipoEmbalagem : "",
-  operador: "",
-  referencia: "",
-  quantidadePaletes: "",
-  cliente: "",
-  data: "",
-  produtosPalete: "",
-  lote: ""
-
-}
-
-//const [encomenda,setEncomenda] = useState();
-
 const FormularioSeccaoDois = () => {
   
+  let prevEncomenda = {Encomenda:{}}
+  const [encomenda,setEncomenda] = useState({tipoEmbalagem :"",operador:"",referencia:"",quantidadePaletes:"",cliente:"",data:[""],produtosPalete:"",lote:""})
+
   const [form] = Form.useForm();
   
-  const onFinish = async () =>{
-    //console.log(`Received these values: ${values}`);
-    //setEncomenda(form.getFieldsValue(true));
-    Encomenda = await form.getFieldsValue(true);
-    console.log(Encomenda);
+  const [modalAberto, setModalAberto] = useState(false)
+  //const [dataFormulario, setDataFormulario] = useState<[]>([])
+  
+  const handleAbrirModal = () =>{
+    setModalAberto(true);
+  }
 
+  const atualizarData = () =>{
+    //setDataFormulario({})
+  }
+  
+  const noFinalDoFormulario = async () =>{
+    prevEncomenda = await form.getFieldsValue(true)
+    await setEncomenda((corpoObjeto)=>({...corpoObjeto,...prevEncomenda.Encomenda}))
+    console.log("A funcao onFinish esta a ativar o modal")
+    //await atualizarData();
+    
+    
+    handleAbrirModal();
+    console.log(encomenda)
+    console.log(prevEncomenda);
+  }
+  
+  const onFinish = async () =>{
+   noFinalDoFormulario().then(()=>{setModalAberto(false)}).finally(()=>console.log(`chegaste a funçao finally abrir modal esta a ${modalAberto}`))
     
   }
     return (<><Form
@@ -101,7 +109,6 @@ const FormularioSeccaoDois = () => {
           layout="horizontal"
           size={"middle"}
           autoComplete='true'
-          
         >
           <Form.Item label="Tipo de Embalagem" name={["Encomenda","tipoEmbalagem"]} rules={[{required:true,message:"Indique qual o tipo de embalagem"}]}>
             <Radio.Group>
@@ -114,9 +121,9 @@ const FormularioSeccaoDois = () => {
             <Input />
           </Form.Item>
           <Form.Item label="Referência" name={["Encomenda","referencia"]} rules={[{required:true,message:"Indique qual a referência da receita"}]}>
-            <Select onChange={({})=>{}}>
+            <Select>
               {referênciasFormulário.map((item)=>{
-                return(<Select.Option value={item.label}>{item.referencia}</Select.Option>)
+                return(<Select.Option value={item.referencia}>{item.label}</Select.Option>)
                 })}
             </Select>
           </Form.Item>
@@ -136,12 +143,13 @@ const FormularioSeccaoDois = () => {
             <InputNumber />
           </Form.Item>
           <Form.Item label="Submeter">
-            <Button htmlType="submit" onClick={()=>{<ModalComponent/>}}>Submeter</Button>
+            <Button htmlType="submit">Submeter</Button>
           </Form.Item>
         </Form>
         <div style={{marginLeft:"15%"}}>
-          <CodigoQR informacaoAInserir={Encomenda}/>
+          <CodigoQR informacaoAInserir={encomenda}/>
         </div>
+        <ModalComponent abrirModal={modalAberto} embalagem={encomenda}/>
     </>);
     };
 

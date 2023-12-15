@@ -1,5 +1,11 @@
 import { DatePicker, Space } from 'antd';
 import type { DatePickerProps, RangePickerProps } from 'antd/es/date-picker';
+import { useState } from 'react';
+
+interface EscolherDataProps {
+  Data : string[]
+}
+
 
 const { RangePicker } = DatePicker;
 
@@ -9,6 +15,7 @@ const onChange = (
 ) => {
   console.log('Selected Time: ', value);
   console.log('Formatted Selected Time: ', dateString);
+  /////ATUALIZARR AQUI A DATA
 };
 
 const onOk = (value: DatePickerProps['value'] | RangePickerProps['value']) => {

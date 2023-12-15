@@ -2,7 +2,6 @@
 import {ContentHeader} from '@components';
 import GaugeComponent from '@app/components/gauge/GaugeComponent';
 import FormularioSeccaoDois from '@app/components/form-component/formSeccao2';
-import CodigoQR from '@app/components/codigoQR/qrCode-component';
 
 const Secção2 = () => {
   return (
@@ -30,8 +29,8 @@ const Secção2 = () => {
             <div className="card-header">
               <h3 className="card-title">Visores de Controlo</h3>
             </div>
-            <div className="card-body" style={{display:"inline-flex", maxWidth:"100%"}}>
-              <div id='gaugeContainer' style={{display:"inline-flex",maxWidth:"100%"}}>
+            <div className="card-body" style={{display:"flex", maxWidth:"100%"}}>
+              <div id='gaugeContainer' style={{display:"flex",maxWidth:"100%",flexWrap:"wrap"}}>
                 <GaugeComponent valorAtual={86} valorMaximo={120}/>
                 <GaugeComponent valorAtual={35} valorMaximo={120}/>
                 <GaugeComponent valorAtual={95} valorMaximo={120}/>
@@ -46,8 +45,8 @@ const Secção2 = () => {
             <div className="card-header">
               <h3 className="card-title">Visores de Controlo</h3>
             </div>
-            <div className="card-body" style={{display:"inline-flex", maxWidth:"100%"}}>
-              <div id='gaugeContainer' style={{display:"inline-flex",maxWidth:"100%"}}>
+            <div className="card-body" style={{display:"flex", maxWidth:"100%", flexWrap:"wrap"}}>
+              <div id='gaugeContainer' style={{display:"flex",maxWidth:"100%",flexWrap:"wrap"}}>
                 <GaugeComponent valorAtual={86} valorMaximo={120}/>
                 <GaugeComponent valorAtual={35} valorMaximo={120}/>
                 <GaugeComponent valorAtual={95} valorMaximo={120}/>
