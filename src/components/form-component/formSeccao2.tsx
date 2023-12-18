@@ -9,9 +9,23 @@ import {
   } from 'antd';
 import EscolherData from './date-picker';
 import CodigoQR from '../codigoQR/qrCode-component';
-import { useEffect, useState } from 'react';
+import {useState } from 'react';
 import ModalComponent from '../modal/ModalComponent';
-  
+import { DatePicker } from 'antd';
+import { DatePickerProps, RangePickerProps } from 'antd/es/date-picker';
+
+interface Iencomenda {
+  tipoEmbalagem :"",
+  operador:"",
+  referencia:"",
+  quantidadePaletes:"",
+  cliente:"",
+  data: string | [string, string] | undefined
+  produtosPalete:"",
+  lote:""
+}
+
+
 const referênciasFormulário = [
   {
     label: "Referência Receita A",
@@ -69,37 +83,56 @@ const clientesFormulário = [
 const FormularioSeccaoDois = () => {
   
   let prevEncomenda = {Encomenda:{}}
-  const [encomenda,setEncomenda] = useState({tipoEmbalagem :"",operador:"",referencia:"",quantidadePaletes:"",cliente:"",data:[""],produtosPalete:"",lote:""})
+  const [encomenda,setEncomenda] = useState<Iencomenda>({tipoEmbalagem :"",operador:"",referencia:"",quantidadePaletes:"",cliente:"",data:"",produtosPalete:"",lote:""})
 
   const [form] = Form.useForm();
   
   const [modalAberto, setModalAberto] = useState(false)
-  //const [dataFormulario, setDataFormulario] = useState<[]>([])
-  
+
   const handleAbrirModal = () =>{
     setModalAberto(true);
   }
 
-  const atualizarData = () =>{
-    //setDataFormulario({})
-  }
-  
   const noFinalDoFormulario = async () =>{
     prevEncomenda = await form.getFieldsValue(true)
     await setEncomenda((corpoObjeto)=>({...corpoObjeto,...prevEncomenda.Encomenda}))
-    console.log("A funcao onFinish esta a ativar o modal")
-    //await atualizarData();
-    
-    
+    console.log("A data definida pela variavel dataHora é",dataHora)
     handleAbrirModal();
-    console.log(encomenda)
-    console.log(prevEncomenda);
+    //console.log(encomenda)
+    //console.log(prevEncomenda);
   }
   
   const onFinish = async () =>{
-   noFinalDoFormulario().then(()=>{setModalAberto(false)}).finally(()=>console.log(`chegaste a funçao finally abrir modal esta a ${modalAberto}`))
-    
+    await setEncomenda({...encomenda,data:dataHora})
+    await noFinalDoFormulario()
+    .then(()=>console.log(encomenda))
+    .then(()=>{setModalAberto(false)})
+    .finally(()=>console.log(`chegaste a funçao finally abrir modal esta a ${modalAberto}`))
   }
+
+  /////////////////////////////////////////////////////
+  //Introduzir abaixo as propriedades e funcoes do Date Picker
+  /////////////////////////////////////////////////////
+    
+  const { RangePicker } = DatePicker;
+  const [dataHora,setDataHora] = useState<string|[string,string]>();
+    
+  const onChange = (
+    value: DatePickerProps['value'] | RangePickerProps['value'],
+    dateString: [string, string] | string,
+  ) => {
+    console.log('Selected Time: ', value);
+    console.log('Formatted Selected Time: ', dateString);
+    setDataHora(dateString);
+  };
+
+  const onOk = (value: DatePickerProps['value'] | RangePickerProps['value']) => {
+    console.log('onOk: ', value);
+  };
+
+  /////////////////////////////////////////////////////
+  //Introduzir acima as propriedades e funcoes do Date Picker
+  /////////////////////////////////////////////////////
     return (<><Form
           form={form}
           name='FormularioSec2'
@@ -133,8 +166,8 @@ const FormularioSeccaoDois = () => {
           <Form.Item label="Cliente" name={["Encomenda","cliente"]} rules={[{required:true,message:"Indique qual o nome do cliente"}]}>
             <Cascader options={clientesFormulário}/>
           </Form.Item>
-          <Form.Item label="Data" name={["Encomenda","data"]} rules={[]}>
-            <EscolherData />
+          <Form.Item label="Data" name={["Encomenda","data"]} rules={[{}]}>
+            <EscolherData funcaoParaOK={onOk} funcaoParaOnChange={onChange} />
           </Form.Item>
           <Form.Item label="Produtos p/ Palete" name={["Encomenda","produtosPalete"]} rules={[{required:true,message:"Indique quantos produtos exitem por palete"}]}>
             <InputNumber />

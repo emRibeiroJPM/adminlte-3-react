@@ -27,10 +27,10 @@ const Secção2 = () => {
         <div className="container-fluid">
           <div className="card">
             <div className="card-header">
-              <h3 className="card-title">Visores de Controlo</h3>
+              <h3 className="card-title">Visores de Controlo Zona A</h3>
             </div>
-            <div className="card-body" style={{display:"flex", maxWidth:"100%"}}>
-              <div id='gaugeContainer' style={{display:"flex",maxWidth:"100%",flexWrap:"wrap"}}>
+            <div className="card-body">
+              <div id='gaugeContainer' style={{display:"flex",maxWidth:"100%",flexWrap:"wrap",justifyContent:'space-evenly'}}>
                 <GaugeComponent valorAtual={86} valorMaximo={120}/>
                 <GaugeComponent valorAtual={35} valorMaximo={120}/>
                 <GaugeComponent valorAtual={95} valorMaximo={120}/>
@@ -43,10 +43,10 @@ const Secção2 = () => {
         <div className="container-fluid">
           <div className="card">
             <div className="card-header">
-              <h3 className="card-title">Visores de Controlo</h3>
+              <h3 className="card-title">Visores de Controlo Zona B</h3>
             </div>
-            <div className="card-body" style={{display:"flex", maxWidth:"100%", flexWrap:"wrap"}}>
-              <div id='gaugeContainer' style={{display:"flex",maxWidth:"100%",flexWrap:"wrap"}}>
+            <div className="card-body">
+              <div id='gaugeContainer' style={{display:"flex",maxWidth:"100%",flexWrap:"wrap",justifyContent:'space-evenly'}}>
                 <GaugeComponent valorAtual={86} valorMaximo={120}/>
                 <GaugeComponent valorAtual={35} valorMaximo={120}/>
                 <GaugeComponent valorAtual={95} valorMaximo={120}/>

@@ -51,8 +51,7 @@ const SmallBox = ({
         draggable: true,
         progress: undefined,
         theme: "light",
-    })
-      
+    }) 
     }
   },[count]);
   
@@ -70,7 +69,6 @@ const SmallBox = ({
       pauseOnHover
       theme="light"
       />
-      {}
     <ToastContainer />
     <div className={`small-box bg-${estado}`}>
       <div className="inner">

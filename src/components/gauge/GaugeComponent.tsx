@@ -1,11 +1,15 @@
 import { Common, Gauge } from "@ant-design/plots"
 import {Cascader} from 'antd';
+import { useState } from "react";
+
 
 interface Opcao {
-  value: string | number,
+  value: string | number | undefined,
   label: string,
   children?: Opcao[];
 }
+
+//IMPLEMENTAR USE STATE DA MAQUINA PARA USAR NO TITULO DO VISOR DOS GAUGES
 
 const opcoes: Opcao[] = [
   {
@@ -52,7 +56,7 @@ const opcoes: Opcao[] = [
   }
 ]
 
-const onChange = (escolha : Opcao["value"]) =>{
+const onChange = (escolha : Opcao['value']) =>{
   console.log(escolha)
 }
 
@@ -60,6 +64,7 @@ interface gaugeProps {
   valorAtual: Common | number,
   valorMaximo: Common | number
 }
+
 
 function GaugeComponent({valorAtual,valorMaximo}:gaugeProps) {
   
