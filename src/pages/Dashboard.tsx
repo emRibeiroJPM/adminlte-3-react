@@ -12,7 +12,7 @@ const Dashboard = () => {
         <div className="container-fluid">
           <div style={{display:'flex',flexDirection:'row',justifyContent:'space-evenly'}}>
             <div className="col-lg-3 col-6">
-              <SmallBox type='success' count={100} title='Secção 1' navigateTo='/primeira-seccao' />
+              <SmallBox type='success' count={40} title='Secção 1' navigateTo='/primeira-seccao' />
             </div>
             <div className="col-lg-3 col-6">
               <SmallBox type='success' count={100} title='Secção 2' navigateTo='/segunda-seccao'/>
@@ -27,7 +27,7 @@ const Dashboard = () => {
         <div className="container-fluid">
           <div className="card">
             <  div className="card-header">
-              <h3 className="card-title">Status Gerais da Primeira Secção</h3>
+              <h3 className="card-title">Status Gerais</h3>
               <div className="card-tools">
               </div>
             </div>
@@ -41,7 +41,7 @@ const Dashboard = () => {
         <div className="container-fluid">
           <div className="card">
             <  div className="card-header">
-              <h3 className="card-title">Status Gerais da Primeira Secção</h3>
+              <h3 className="card-title">Status Gerais</h3>
               <div className="card-tools">
               </div>
             </div>
