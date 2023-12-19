@@ -1,12 +1,4 @@
-import {
-    Button,
-    Cascader,
-    Form,
-    Input,
-    InputNumber,
-    Radio,
-    Select,
-  } from 'antd';
+import {Button,Cascader,Form,Input,InputNumber,Radio,Select,} from 'antd';
 import EscolherData from './date-picker';
 import CodigoQR from '../codigoQR/qrCode-component';
 import {useState } from 'react';
@@ -24,7 +16,6 @@ interface Iencomenda {
   produtosPalete:"",
   lote:""
 }
-
 
 const referênciasFormulário = [
   {
@@ -81,12 +72,10 @@ const clientesFormulário = [
 ]
 
 const FormularioSeccaoDois = () => {
-  
+
   let prevEncomenda = {Encomenda:{}}
   const [encomenda,setEncomenda] = useState<Iencomenda>({tipoEmbalagem :"",operador:"",referencia:"",quantidadePaletes:"",cliente:"",data:"",produtosPalete:"",lote:""})
-
   const [form] = Form.useForm();
-  
   const [modalAberto, setModalAberto] = useState(false)
 
   const handleAbrirModal = () =>{

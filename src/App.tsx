@@ -74,7 +74,7 @@ const App = () => {
     return <p>Loading</p>;
   }
 
-  return (
+  return (<>
     <BrowserRouter>
       <Routes>
         <Route path="/login" element={<PublicRoute />}>
@@ -115,6 +115,7 @@ const App = () => {
         pauseOnHover
       />
     </BrowserRouter>
+    </>
   );
 };
 

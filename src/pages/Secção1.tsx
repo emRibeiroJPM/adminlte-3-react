@@ -1,10 +1,10 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import {ContentHeader} from '@components';
 import TankLevel from '@app/components/tank-level-Indicator/TankLevel';
-import { Button, Flex } from 'antd';
+import { Button} from 'antd';
 import {SwapLeftOutlined,SwapRightOutlined} from '@ant-design/icons'
 import { useRef } from 'react';
-
+import LineChartV2 from '@app/components/line-chart/LineChartV2';
 
 const Secção1 = () => {
 
@@ -68,16 +68,16 @@ const Secção1 = () => {
                   <TankLevel percent={0.29} title={'Tanque 2'} materiaPrima={materiaPrima[3].label}/>
                 </div>
                 <div>
-                  <TankLevel percent={0.65} title={'Tanque 3'} materiaPrima={materiaPrima[2].label}/>
+                  <TankLevel percent={0.60} title={'Tanque 3'} materiaPrima={materiaPrima[2].label}/>
                 </div>
                 <div>
-                  <TankLevel percent={0.45} title={'Tanque 4'} materiaPrima={materiaPrima[5].label}/>
+                  <TankLevel percent={0.40} title={'Tanque 4'} materiaPrima={materiaPrima[5].label}/>
                 </div>
                 <div>
-                  <TankLevel percent={0.97} title={'Tanque 5'} materiaPrima={materiaPrima[4].label}/>
+                  <TankLevel percent={0.17} title={'Tanque 5'} materiaPrima={materiaPrima[4].label}/>
                 </div>
                 <div>
-                  <TankLevel percent={0.10} title={'Tanque 6'} materiaPrima={materiaPrima[1].label}/>
+                  <TankLevel percent={0.85} title={'Tanque 6'} materiaPrima={materiaPrima[1].label}/>
                 </div>
               </div>
               <div className='buttonsContainer' style={{display:'flex', justifyContent:'center',gap:'15px'}}>
@@ -94,7 +94,8 @@ const Secção1 = () => {
             <div className="card-header">
               <h3 className="card-title">Timeline do Nível dos Tanques</h3>
             </div>
-            <div className="card-body" style={{display:'inline-flex',flexDirection:'row' ,maxWidth:'100%', flexWrap:'wrap'}}>
+            <div className="card-body">
+                <LineChartV2/> 
             </div>
           </div>
         </div>
@@ -104,15 +105,3 @@ const Secção1 = () => {
 };
 
 export default Secção1;
-
-
-
-
-/*
-            <div className="card-body" style={{display:'flex',
-            flexDirection:'row',
-            maxWidth:'100%',
-            flexWrap:'wrap',
-            justifyContent:'space-evenly'}}>
-
-*/
