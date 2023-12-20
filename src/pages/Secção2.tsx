@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import {ContentHeader} from '@components';
 import GaugeComponent from '@app/components/gauge/GaugeComponent';
 import FormularioSeccaoDois from '@app/components/form-component/formSeccao2';
@@ -60,3 +59,8 @@ const Secção2 = () => {
 };
 
 export default Secção2;
+
+
+/*
+
+*/
