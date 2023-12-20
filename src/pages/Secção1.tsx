@@ -5,36 +5,26 @@ import { Button} from 'antd';
 import {SwapLeftOutlined,SwapRightOutlined} from '@ant-design/icons'
 import { useRef } from 'react';
 import LineChartV2 from '@app/components/line-chart/LineChartV2';
+import { useState,useEffect } from 'react';
+interface dataTanqueType {
+  "label": string | undefined,
+  "value": {
+      "Tanque": string | any,
+      "Nivel": number | any,
+      "MatériaPrima": string | any
+  }
+}
+
+const defaultTanqueVal:dataTanqueType = {
+  "label": "",
+  "value": {
+      "Tanque": "Tanque ?",
+      "Nivel": 0.24,
+      "MatériaPrima": "Materia Prima X"
+  }
+}
 
 const Secção1 = () => {
-
-  const materiaPrima = [ 
-    {
-      label: "Matéria Prima A",
-      value: "Materia Prima A",
-    },
-    {
-      label:"Matéria Prima B",
-      value:"Materia Prima B",
-    },
-    {
-      label:"Matéria Prima C",
-      value:"Materia Prima C"
-    },
-    {
-      label:"Matéria Prima D",
-      value:"Materia Prima D"
-    },
-    {
-      label:"Matéria Prima E",
-      value:"Materia Prima E"
-    },
-    {
-      label:"Água",
-      value:"Água"
-    },
-    
-]
 
   const horizontalRef: any = useRef();
 
@@ -45,7 +35,38 @@ const Secção1 = () => {
       horizontalRef ? (horizontalRef.current.scrollLeft += 200) : null;
     }
   };
+  
+  const [tanque1,setTanque1] = useState<dataTanqueType>(defaultTanqueVal)
+  const [tanque2,setTanque2] = useState<dataTanqueType>(defaultTanqueVal)
+  const [tanque3,setTanque3] = useState<dataTanqueType>(defaultTanqueVal)
+  const [tanque4,setTanque4] = useState<dataTanqueType>(defaultTanqueVal)
+  const [tanque5,setTanque5] = useState<dataTanqueType>(defaultTanqueVal)
+  const [tanque6,setTanque6] = useState<dataTanqueType>(defaultTanqueVal)
 
+
+
+  const recebeInfoTodosTanques = async () => {
+    const resposta = await fetch('http://localhost:3000/tanques/all')
+    const json:any = await resposta.json()
+    console.log("a resposta todos é",json)
+    return json
+  }
+
+  useEffect(() => {
+    recebeInfoTodosTanques().then((result:any)=>{
+      let objetos = result
+      //console.log("isto vem dos objectos",objetos)
+      //console.log("primeiro objeto",objetos[0])
+      setTanque1(objetos[0])
+      setTanque2(objetos[1])
+      setTanque3(objetos[2])
+      setTanque4(objetos[3])
+      setTanque5(objetos[4])
+      setTanque6(objetos[5])
+      //console.log("isto e o tanque1",tanque1)
+    })
+  }, []);
+  
   return (
   <div>
       <ContentHeader title="Primeira Secção da Fábrica" />
@@ -62,22 +83,22 @@ const Secção1 = () => {
                 justifyContent:'flex-start',
                 overflow:'hidden'}}>
                 <div>
-                  <TankLevel percent={0.40} title={'Tanque 1'} materiaPrima={materiaPrima[0].label}/>
+                  <TankLevel percent={tanque1.value.Nivel} title={tanque1.value.Tanque} materiaPrima={tanque1.value.MatériaPrima}/> 
                 </div>
                 <div>
-                  <TankLevel percent={0.29} title={'Tanque 2'} materiaPrima={materiaPrima[3].label}/>
+                  <TankLevel percent={tanque2.value.Nivel} title={tanque2.value.Tanque} materiaPrima={tanque2.value.MatériaPrima}/>
                 </div>
                 <div>
-                  <TankLevel percent={0.60} title={'Tanque 3'} materiaPrima={materiaPrima[2].label}/>
+                  <TankLevel percent={tanque3.value.Nivel} title={tanque3.value.Tanque} materiaPrima={tanque3.value.MatériaPrima}/>
                 </div>
                 <div>
-                  <TankLevel percent={0.40} title={'Tanque 4'} materiaPrima={materiaPrima[5].label}/>
+                  <TankLevel percent={tanque4.value.Nivel} title={tanque4.value.Tanque} materiaPrima={tanque4.value.MatériaPrima}/>
                 </div>
                 <div>
-                  <TankLevel percent={0.17} title={'Tanque 5'} materiaPrima={materiaPrima[4].label}/>
+                  <TankLevel percent={tanque5.value.Nivel} title={tanque5.value.Tanque} materiaPrima={tanque5.value.MatériaPrima}/>
                 </div>
                 <div>
-                  <TankLevel percent={0.85} title={'Tanque 6'} materiaPrima={materiaPrima[1].label}/>
+                  <TankLevel percent={tanque6.value.Nivel} title={tanque6.value.Tanque} materiaPrima={tanque6.value.MatériaPrima}/>
                 </div>
               </div>
               <div className='buttonsContainer' style={{display:'flex', justifyContent:'center',gap:'15px'}}>
@@ -105,3 +126,13 @@ const Secção1 = () => {
 };
 
 export default Secção1;
+
+
+/*
+const pedidoDeInformacao = async () =>{
+  const resposta = await fetch('http://localhost:3000/tanques/1')
+  const json:any = await resposta.json()
+  console.log("a resposta é",json)
+  return json
+ }
+*/
