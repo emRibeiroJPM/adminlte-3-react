@@ -8,14 +8,14 @@ interface result {
 }
 
 interface conteudo{
-  tipoEmbalagem : "" | string,
-  operador: "" | string,
-  referencia: "" | string,
-  quantidadePaletes: "" | string,
-  cliente: "" | string,
-  data: any,
-  produtosPalete: "" | string,
-  lote: "" | string
+  tipoEmbalagem :string,
+  operador:string,
+  referencia:string,
+  quantidadePaletes:number,
+  cliente:string | [string,string],
+  data: string | [string, string] | any
+  produtosPalete:string | number,
+  lote:number
 }
 
 function ModalComponent({abrirModal,embalagem}:result) {
