@@ -64,6 +64,7 @@ const handleConversaoQRImagem = async (element:any,imageFileName:any) =>{
 
 const pdfDocument = ( texto : infoPDF) =>{
     //console.log("dentro do pdf este e o texto not string",texto)
+    //handleConversaoQRImagem()
     return(
     <Document>
         <Page size="A4" style={styles.page}>
@@ -120,3 +121,20 @@ function PDFcomponent( props : infoPDF) {
 }
 
 export default PDFcomponent
+
+
+/*
+const handleDownloadImage = () => {
+    const element = document.getElementById('print'),
+    canvas = await html2canvas(element),
+    data = canvas.toDataURL('image/jpg'),
+    link = document.createElement('a');
+
+    link.href = data;
+    link.download = 'downloaded-image.jpg';
+
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+*/
