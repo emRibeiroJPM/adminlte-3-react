@@ -125,13 +125,3 @@ const Secção1 = () => {
 };
 
 export default Secção1;
-
-
-/*
-const pedidoDeInformacao = async () =>{
-  const resposta = await fetch('http://localhost:3000/tanques/1')
-  const json:any = await resposta.json()
-  console.log("a resposta é",json)
-  return json
- }
-*/
