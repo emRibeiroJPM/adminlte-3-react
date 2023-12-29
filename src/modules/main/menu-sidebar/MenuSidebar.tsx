@@ -103,24 +103,7 @@ const MenuSidebar = () => {
         <span className="brand-text font-weight-light">EgiBoard</span>
       </Link>
       <div className="sidebar">
-        <div className="user-panel mt-3 pb-3 mb-3 d-flex">
-          <div className="image">
-            <StyledUserImage
-              src={authentication.profile.picture}
-              fallbackSrc="/img/default-profile.png"
-              alt="User"
-              width={34}
-              height={34}
-              rounded
-            />
-          </div>
-          <div className="info">
-            <Link to="/profile" className="d-block">
-              {authentication.profile.email}
-            </Link>
-          </div>
-        </div>
-
+        
         <div className="form-inline">
           <SidebarSearch />
         </div>
