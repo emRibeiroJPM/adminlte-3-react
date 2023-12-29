@@ -22,9 +22,9 @@ window.PF = {
 const container: any = document.getElementById("root");
 const root = createRoot(container);
 root.render(
-  <>
+  <Provider store={store}>
     <App />
-  </>
+  </Provider>
 );
 
 // If you want your app to work offline and load faster, you can change
@@ -33,7 +33,5 @@ root.render(
 serviceWorker.unregister();
 
 /*
-  <Provider store={store}>
-    <App />
-  </Provider>
+
 */
