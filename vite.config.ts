@@ -5,10 +5,6 @@ import basicSsl from "@vitejs/plugin-basic-ssl";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  build: {
-    // generate .vite/manifest.json in outDir
-    manifest: true,
-  },
   mode: "development",
   plugins: [react(), basicSsl()],
   resolve: {
