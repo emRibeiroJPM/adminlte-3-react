@@ -56,7 +56,7 @@ const opcoes: Opcao[] = [
   }
 ]
 
-const onChange = (escolha : Opcao['value']) =>{
+const onChange = (escolha : Opcao['value'] | any) =>{
   console.log(escolha)
 }
 
@@ -68,7 +68,7 @@ interface gaugeProps {
 
 function GaugeComponent({valorAtual,valorMaximo}:gaugeProps) {
   
-  const config = {
+  const config : any = {
     width: 400,
     height: 400,
     autoFit: false,
