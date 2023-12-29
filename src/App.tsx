@@ -40,7 +40,7 @@ const App = () => {
   const screenSize = useSelector((state: any) => state.ui.screenSize);
   const dispatch = useDispatch();
   const [isAppLoading, setIsAppLoading] = useState(true);
-/*
+
   const checkSession = async () => {
     try {
       let responses: any = await Promise.all([
@@ -58,9 +58,9 @@ const App = () => {
     }
     setIsAppLoading(false);
   };
-*/
+
   useEffect(() => {
-    //checkSession();
+    checkSession();
   }, []);
 
   useEffect(() => {
