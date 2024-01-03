@@ -1,6 +1,5 @@
 import { Common, Gauge } from "@ant-design/plots"
 import {Cascader} from 'antd';
-import { useState } from "react";
 
 
 interface Opcao {

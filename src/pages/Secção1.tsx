@@ -4,7 +4,7 @@ import TankLevel from '@app/components/tank-level-Indicator/TankLevel';
 import { Button} from 'antd';
 import {SwapLeftOutlined,SwapRightOutlined} from '@ant-design/icons'
 import { useRef } from 'react';
-import LineChartV2 from '@app/components/line-chart/LineChartV2';
+import TimelineTanques from '@app/components/line-chart/TimelineTanques';
 import { useState,useEffect } from 'react';
 
 interface dbDataTanqueType {
@@ -38,19 +38,10 @@ const Secção1 = () => {
   const [tanque5,setTanque5] = useState<dbDataTanqueType>(defaultTanqueVal)
   const [tanque6,setTanque6] = useState<dbDataTanqueType>(defaultTanqueVal)
 
-/*
-  FUNCAO DEPRECADA
-  const recebeInfoTodosTanques = async () => {
-    const resposta = await fetch('http://localhost:3000/tanques/all')
-    const json:any = await resposta.json()
-    //console.log("a resposta todos é",json)
-    return json
-  }
-*/
   const consomeDadosBD = async ()=>{
     const resposta = await fetch('http://localhost:3000/tanques')
     const json:any = await resposta.json()
-    console.log("a resposta da Base de Dados é",json.tanques)
+    //console.log("a resposta da Base de Dados é",json.tanques)
     return json
   }
 
@@ -115,7 +106,7 @@ const Secção1 = () => {
               <h3 className="card-title">Timeline do Nível dos Tanques</h3>
             </div>
             <div className="card-body">
-                <LineChartV2/> 
+                <TimelineTanques/> 
             </div>
           </div>
         </div>
