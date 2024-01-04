@@ -10,7 +10,7 @@ const Secção2 = () => {
         <div className="container-fluid">
           <div className="card">
             <div className="card-header">
-              <h3 className="card-title">Formulário</h3>
+              <h3 className="card-title">Ordem de Rotulagem</h3>
             </div>
             <div className="card-body">
                 <div style={{flexDirection:"row",justifyContent:"center",}}>
