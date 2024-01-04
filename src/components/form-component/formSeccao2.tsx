@@ -200,7 +200,7 @@ const FormularioSeccaoDois = () => {
               { required: true, message: "Indique qual o nome do operador" },
             ]}
           >
-            <Input />
+            <Input count={{show:true,max:10}} placeholder="Nome do Operador"/>
           </Form.Item>
           <Form.Item
             label="Referência"
@@ -229,7 +229,7 @@ const FormularioSeccaoDois = () => {
               { required: true, message: "Indique qual o numero de paletes" },
             ]}
           >
-            <InputNumber />
+            <InputNumber min={1}/>
           </Form.Item>
           <Form.Item
             label="Cliente"
@@ -253,7 +253,7 @@ const FormularioSeccaoDois = () => {
               },
             ]}
           >
-            <InputNumber />
+            <InputNumber min={1}/>
           </Form.Item>
           <Form.Item
             label="Lote"
@@ -262,7 +262,7 @@ const FormularioSeccaoDois = () => {
               { required: true, message: "Indique qual o número do lote" },
             ]}
           >
-            <InputNumber />
+            <InputNumber min={1}/>
           </Form.Item>
           <Form.Item label="Submeter">
             <Button type="primary" htmlType="submit">
