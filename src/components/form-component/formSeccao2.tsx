@@ -45,6 +45,21 @@ const referênciasFormulário = [
     label: "Referência Receita D",
     referencia: "40020040",
   },
+  {
+    id: 4,
+    label: "Referência Receita E",
+    referencia: "40020050",
+  },
+  {
+    id: 5,
+    label: "Referência Receita F",
+    referencia: "40020060",
+  },
+  {
+    id: 6,
+    label: "Referência Receita G",
+    referencia: "40020070",
+  },
 ];
 
 const clientesFormulário = [
