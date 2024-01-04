@@ -1,8 +1,6 @@
 import { UserManager, UserManagerSettings } from 'oidc-client-ts';
 import { sleep } from './helpers';
 
-declare const FB: any;
-
 const GOOGLE_CONFIG: UserManagerSettings = {
   authority: 'https://accounts.google.com',
   client_id:

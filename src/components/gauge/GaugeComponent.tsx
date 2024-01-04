@@ -1,5 +1,6 @@
 import { Common, Gauge } from "@ant-design/plots"
 import {Cascader} from 'antd';
+import {useEffect, useState} from 'react';
 
 
 interface Opcao {
@@ -17,15 +18,15 @@ const opcoes: Opcao[] = [
     children:[
       {
         label:'Maquina 1',
-        value:'Maquina 1',
+        value:'Máquina 1',
       },
       {
         label:'Maquina 2',
-        value:'Maquina 2',
+        value:'Máquina 2',
       },
       {
         label:'Maquina 3',
-        value:'Maquina 3',
+        value:'Máquina 3',
       }
     ]
   },
@@ -35,11 +36,11 @@ const opcoes: Opcao[] = [
     children:[
       {
         label:'Maquina 1',
-        value:'Maquina 1',
+        value:'Máquina 1',
       },
       {
         label:'Maquina 2',
-        value:'Maquina 2',
+        value:'Máquina 2',
       },
     ]
   },
@@ -49,15 +50,12 @@ const opcoes: Opcao[] = [
     children:[
       {
         label:'Maquina 1',
-        value:'Maquina 1',
+        value:'Máquina 1',
       },
     ]
   }
 ]
 
-const onChange = (escolha : Opcao['value'] | any) =>{
-  console.log(escolha)
-}
 
 interface gaugeProps {
   valorAtual: Common | number,
@@ -67,6 +65,30 @@ interface gaugeProps {
 
 function GaugeComponent({valorAtual,valorMaximo}:gaugeProps) {
   
+  const [titulo,setTitulo] = useState("Visor de Controlo");
+  
+  const onChange = (escolha : Opcao['value'] | any) =>{
+    console.log(escolha);
+    setTitulo(escolha[1]);
+  }
+
+  const [data,setData] = useState();
+
+  const getData = async () =>{
+    try {
+      const resposta = await fetch('http://localhost:3000/maquinas');
+      const json = await resposta.json();
+      setData(json);
+      return `Dados recebidos com sucesso ${json}`
+    } catch (error) {
+      console.error("Falha na obtençao dos dados",error)
+    }
+  }
+
+  useEffect(()=>{
+    getData().then((response)=>{console.log(`A resposta recebida do fetch foi ${response}`)})
+  },[])
+
   const config : any = {
     width: 400,
     height: 400,
@@ -90,7 +112,7 @@ function GaugeComponent({valorAtual,valorMaximo}:gaugeProps) {
   return (<>
     <div style={{display:"flex", flexDirection:"column",alignItems:"center",flexWrap:"wrap"}}>
       <div style={{marginBottom:"-10vh", textAlign:"center"}}>
-          <h3 style={{marginBottom:"-2px",fontSize:"1.em"}}>Visor de Controlo</h3>
+          <h3 style={{marginBottom:"-2px",fontSize:"1.em"}}>{titulo}</h3>
         <Gauge {...config}/>
       </div>
       <p style={{marginBottom:"3%", fontSize:"1.125em"}}>Máquina a analisar</p>
