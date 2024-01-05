@@ -143,7 +143,20 @@ import {
           )
         );
     };
-  
+    
+    const DataAtual:any = new Date;
+
+    const [horaInicio,setHoraInicio] = useState();
+    const [horaFim,setHoraFim] = useState();
+
+
+    const obterHoraInicioHandler = () =>{
+      setHoraInicio(DataAtual);
+    }
+
+    const obterHoraFimHandler = () =>{
+      setHoraFim(DataAtual);
+    }
 
     return (
       <>
@@ -251,10 +264,10 @@ import {
                 name={["Encomenda","horaInicio"]}
                 rules={[{required:true,message:"Introduza uma hora de inicio"}]}>
                 <Flex gap="middle">
-                    <Button type="primary" shape="circle">
+                    <Button type="primary" shape="circle" onClick={obterHoraInicioHandler}>
                     {`->`}
                     </Button>
-                <Input addonBefore={<FieldTimeOutlined/>} placeholder="Hora de Inicio" />
+                <Input addonBefore={<FieldTimeOutlined/>} placeholder="Hora de Inicio" value={horaInicio} />
                 </Flex>
             </Form.Item>
                 <Form.Item
@@ -262,10 +275,10 @@ import {
                     name={["Encomenda","horaFim"]}
                     rules={[{required:true,message:"Introduza uma hora de fim"}]}>
                 <Flex gap="middle">
-                    <Button type="primary" shape="circle">
+                    <Button type="primary" shape="circle" onClick={obterHoraFimHandler}>
                     {`->`}
                     </Button>
-                    <Input addonBefore={<FieldTimeOutlined/>} placeholder="Hora de Fim" />
+                    <Input addonBefore={<FieldTimeOutlined/>} placeholder="Hora de Fim" value={horaFim}/>
                 </Flex>
                 </Form.Item>
             <Form.Item 

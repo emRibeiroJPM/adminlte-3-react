@@ -31,13 +31,13 @@ export const MENU: IMenuItem[] = [
       },
       
       {
-        name: 'Secção 2',
+        name: 'Ordem Rotulagem',
         icon: 'fas fa-cogs nav-icon',
         path: '/segunda-seccao'
       },
 
       {
-        name: 'Secção 3',
+        name: 'Ordem Enchimento',
         icon: 'fas fa-cogs nav-icon',
         path: '/terceira-seccao'
       }
