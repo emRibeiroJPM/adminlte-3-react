@@ -158,7 +158,7 @@ import {
             size={"middle"}
             autoComplete="true"
           >
-                        <Form.Item
+            <Form.Item
               label="Referência"
               name={["Encomenda", "referencia"]}
               rules={[
@@ -168,7 +168,7 @@ import {
                 },
               ]}
             >
-              <Select>
+              <Select placeholder="Referencia OE (Orderm Enchimento)">
                 {referênciasFormulário.map((item) => {
                   return (
                     <Select.Option key={item.id} value={item.referencia}>
