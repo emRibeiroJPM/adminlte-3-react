@@ -212,7 +212,7 @@ const FormularioSeccaoDois = () => {
               },
             ]}
           >
-            <Select>
+            <Select placeholder="Referencia OR (Orderm Rotulagem)">
               {referênciasFormulário.map((item) => {
                 return (
                   <Select.Option key={item.id} value={item.referencia}>
@@ -229,7 +229,7 @@ const FormularioSeccaoDois = () => {
               { required: true, message: "Indique qual o numero de paletes" },
             ]}
           >
-            <InputNumber min={1}/>
+            <InputNumber min={1} placeholder="1"/>
           </Form.Item>
           <Form.Item
             label="Cliente"
@@ -238,7 +238,7 @@ const FormularioSeccaoDois = () => {
               { required: true, message: "Indique qual o nome do cliente" },
             ]}
           >
-            <Cascader options={clientesFormulário} />
+            <Cascader options={clientesFormulário} placeholder="Cliente destinatário" />
           </Form.Item>
           <Form.Item label="Data" name={["Encomenda", "data"]} rules={[{}]}>
             <EscolherData funcaoParaOK={onOk} funcaoParaOnChange={onChange} />
@@ -253,7 +253,7 @@ const FormularioSeccaoDois = () => {
               },
             ]}
           >
-            <InputNumber min={1}/>
+            <InputNumber min={1} placeholder="1"/>
           </Form.Item>
           <Form.Item
             label="Lote"
@@ -262,7 +262,7 @@ const FormularioSeccaoDois = () => {
               { required: true, message: "Indique qual o número do lote" },
             ]}
           >
-            <InputNumber min={1}/>
+            <InputNumber min={1} placeholder="1"/>
           </Form.Item>
           <Form.Item label="Submeter">
             <Button type="primary" htmlType="submit">
