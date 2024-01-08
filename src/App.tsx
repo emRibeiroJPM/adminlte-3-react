@@ -91,9 +91,9 @@ const App = () => {
         </Route>
         <Route path="/" element={<PrivateRoute />}>
           <Route path="/" element={<Main />}>
-            <Route path="/primeira-seccao" element={<Secção1 />} />
-            <Route path="/segunda-seccao" element={<Secção2 />} />
-            <Route path="/terceira-seccao" element={<Secção3 />} />
+            <Route path="/estadoTanques" element={<Secção1 />} />
+            <Route path="/ordemRotulagem" element={<Secção2 />} />
+            <Route path="/ordemEnchimento" element={<Secção3 />} />
             <Route path="/utilizador-1" element={<Utilizador1 />} />
             <Route path="/utilizador-2" element={<Utilizador2 />} />
             <Route path="/utilizador-3" element={<Utilizador3 />} />

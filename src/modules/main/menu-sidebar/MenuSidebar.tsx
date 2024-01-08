@@ -27,20 +27,19 @@ export const MENU: IMenuItem[] = [
       {
         name: 'Estado Tanques',
         icon: 'fas fa-cogs nav-icon',
-        path: '/primeira-seccao'
+        path: '/estadoTanques'
       },
-      
-      {
-        name: 'Ordem Rotulagem',
-        icon: 'fas fa-cogs nav-icon',
-        path: '/segunda-seccao'
-      },
-
       {
         name: 'Ordem Enchimento',
         icon: 'fas fa-cogs nav-icon',
-        path: '/terceira-seccao'
-      }
+        path: '/ordemEnchimento'
+      },
+      {
+        name: 'Ordem Rotulagem',
+        icon: 'fas fa-cogs nav-icon',
+        path: '/ordemRotulagem'
+      },
+
     ]
   },
   {
