@@ -5,21 +5,23 @@ import axios from 'axios';
 
 interface result {
   abrirModal: boolean;
-  embalagem: conteudo;
+  ordemRotulagem: conteudo;
 }
 
 interface conteudo {
-  tipoEmbalagem: string;
-  operador: string;
-  referencia: string;
-  quantidadePaletes: number;
-  cliente: string | [string, string];
-  data: string | [string, string] | any;
-  produtosPalete: string | number;
-  lote: number;
+  referencia: string,
+  lote: number,
+  tipoEmbalagem: string,
+  loteEmbalagem: number,
+  tipoTampa: string,
+  loteTampa: number,
+  operador: string,
+  horaInicio: string,
+  horaFim:string,
+  maquinaEnchimento:string
 }
 
-function ModalComponent({ abrirModal, embalagem }: result) {
+function ModalComponent({ abrirModal, ordemRotulagem }: result) {
   const [isOpen, setOpen] = useState<boolean>(false);
   const [foiMandadoAbrir, setFoiMandadoAbrir] = useState<boolean>(false);
   const [toast, setToast] = useState<boolean>(false);
@@ -29,7 +31,7 @@ function ModalComponent({ abrirModal, embalagem }: result) {
   };
 
   const handleEnvioInformacao = async (informacao:any) => {
-    const {data} = await axios.post('http://localhost:3000/ordemRotulagem/novaOrdem',informacao,{headers:{
+    const {data} = await axios.post('http://localhost:3000/ordemEnchimento/novaOrdem',informacao,{headers:{
       "Content-Type":"application/json"
     }})
     //console.log(data)
@@ -41,14 +43,16 @@ function ModalComponent({ abrirModal, embalagem }: result) {
     setFoiMandadoAbrir(false);
     abrirModal = false;
     //console.log("4: handleOk the isOpen Var",isOpen)
+    
     try {
-      handleEnvioInformacao(embalagem).then(() => {
+      handleEnvioInformacao(ordemRotulagem).then(() => {
         console.log("Info enviada com Sucesso");
       }).then(()=>{setToast(true);})
       setTimeout(() => setToast(false), 1000);
     } catch (error) {
       console.error("houve um erro a enviar a informação");
     }
+    
   };
 
   const handleCancel = () => {
@@ -83,36 +87,39 @@ function ModalComponent({ abrirModal, embalagem }: result) {
         <h4>Confirma que os seguintes dados estão corretos:</h4>
         <br />
         <p>
-          <b>Tipo de Embalagem ⇒</b> {embalagem.tipoEmbalagem}
+          <b> Referencia ⇒</b> {ordemRotulagem.referencia}
         </p>
         <p>
-          <b>Operador ⇒</b> {embalagem.operador}
+          <b>Lote ⇒</b> {ordemRotulagem.lote}
         </p>
         <p>
-          <b>Referência ⇒ </b>
-          {embalagem.referencia}
+          <b>Tipo de Embalagem ⇒ </b>
+          {ordemRotulagem.tipoEmbalagem}
         </p>
         <p>
-          <b>Quantidade de Paletes ⇒</b> {embalagem.quantidadePaletes} paletes
+          <b>Lote de Embalagem ⇒</b> {ordemRotulagem.loteEmbalagem}
         </p>
         <p>
-          <b>Cliente ⇒</b> {embalagem.cliente[1]}
+          <b>Tipo de Tampa ⇒</b> {ordemRotulagem.tipoTampa}
+        </p>
+        <p>
+          <b>Lote Tampa ⇒</b> {ordemRotulagem.loteTampa}
+        </p>
+        <p>
+          <b>Operador ⇒</b> {ordemRotulagem.operador}
         </p>
         <p>
           <b>
             Data ⇒&emsp;<em>Inicio: </em>
           </b>
-          {embalagem.data[0]}
+          {ordemRotulagem.horaInicio}
           <b>
             <em>&emsp;Fim: </em>
           </b>{" "}
-          {embalagem.data[1]}{" "}
+          {ordemRotulagem.horaFim}{" "}
         </p>
         <p>
-          <b>Quantidade de Produtos p/ Palete ⇒</b> {embalagem.produtosPalete}
-        </p>
-        <p>
-          <b>Lote ⇒</b> {embalagem.lote}
+          <b>Maquina de Enchimento ⇒</b> {ordemRotulagem.maquinaEnchimento}
         </p>
       </Modal>
       {toast ? (
