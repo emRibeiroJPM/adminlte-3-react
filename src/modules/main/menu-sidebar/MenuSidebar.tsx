@@ -25,7 +25,7 @@ export const MENU: IMenuItem[] = [
     icon: 'fas fa-industry nav-icon',
     children: [
       {
-        name: 'Secção 1',
+        name: 'Estado Tanques',
         icon: 'fas fa-cogs nav-icon',
         path: '/primeira-seccao'
       },
