@@ -19,7 +19,7 @@ const defaultTanqueVal:dbDataTanqueType = {
   "MateriaPrima": "Materia Prima X"
 }
 
-const Secção1 = () => {
+const EstadoTanques = () => {
 
   const horizontalRef: any = useRef();
 
@@ -59,7 +59,7 @@ const Secção1 = () => {
   
   return (
   <div>
-      <ContentHeader title="Primeira Secção da Fábrica" />
+      <ContentHeader title="Estado Tanques" />
       <section className="content">
         <div className="container-fluid">
           <div className="card">
@@ -115,4 +115,4 @@ const Secção1 = () => {
   );
 };
 
-export default Secção1;
+export default EstadoTanques;

@@ -10,9 +10,9 @@ import {
 import EscolherData from "./date-picker";
 import { useState } from "react";
 import ModalComponent from "../modal/ModalComponent";
-import { DatePicker } from "antd";
 import { DatePickerProps, RangePickerProps } from "antd/es/date-picker";
 import PDFcomponent from "../pdfMaster/PDFcomponent";
+import {UserOutlined} from "@ant-design/icons"
 interface Iencomenda {
   tipoEmbalagem: string;
   operador: string;
@@ -97,7 +97,7 @@ const clientesFormulário = [
   },
 ];
 
-const FormularioSeccaoDois = () => {
+const FormularioOrdemRotulagem = () => {
   let prevEncomenda = { Encomenda: {} };
   const [encomenda, setEncomenda] = useState<Iencomenda>({
     tipoEmbalagem: "",
@@ -146,7 +146,6 @@ const FormularioSeccaoDois = () => {
   //Introduzir abaixo as propriedades e funcoes do Date Picker
   /////////////////////////////////////////////////////
 
-  const { RangePicker } = DatePicker;
   const [dataHora, setDataHora] = useState<string | [string, string]>();
 
   const onChange = (
@@ -200,7 +199,7 @@ const FormularioSeccaoDois = () => {
               { required: true, message: "Indique qual o nome do operador" },
             ]}
           >
-            <Input count={{show:true,max:10}} placeholder="Nome do Operador"/>
+            <Input addonBefore={<UserOutlined />} maxLength={10} count={{show:true,max:10}} placeholder="Nome do Operador"/>
           </Form.Item>
           <Form.Item
             label="Referência"
@@ -279,4 +278,4 @@ const FormularioSeccaoDois = () => {
   );
 };
 
-export default FormularioSeccaoDois;
+export default FormularioOrdemRotulagem;

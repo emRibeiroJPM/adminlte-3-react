@@ -15,9 +15,10 @@ import Dashboard from '@pages/Dashboard';
 import Blank from '@pages/Blank';
 import Profile from '@pages/profile/Profile';
 
-import Secção1 from '@pages/Secção1';
-import Secção2 from '@pages/Secção2';
-import Secção3 from '@pages/Secção3';
+import EstadoTanques from '@app/pages/EstadoTanques';
+import OrdemRotulagem from '@app/pages/OrdemRotulagem';
+import OrdemEnchimento from '@app/pages/OrdemEnchimento';
+import AmostrasControloQualidade from './pages/AmostrasControloQualidade';
 
 import Utilizador1 from '@pages/Utilizador1';
 import Utilizador2 from '@pages/Utilizador2';
@@ -91,9 +92,10 @@ const App = () => {
         </Route>
         <Route path="/" element={<PrivateRoute />}>
           <Route path="/" element={<Main />}>
-            <Route path="/estadoTanques" element={<Secção1 />} />
-            <Route path="/ordemRotulagem" element={<Secção2 />} />
-            <Route path="/ordemEnchimento" element={<Secção3 />} />
+            <Route path="/amostrasControloQualidade" element={<AmostrasControloQualidade/>}/>
+            <Route path="/estadoTanques" element={<EstadoTanques />} />
+            <Route path="/ordemRotulagem" element={<OrdemRotulagem />} />
+            <Route path="/ordemEnchimento" element={<OrdemEnchimento />} />
             <Route path="/utilizador-1" element={<Utilizador1 />} />
             <Route path="/utilizador-2" element={<Utilizador2 />} />
             <Route path="/utilizador-3" element={<Utilizador3 />} />

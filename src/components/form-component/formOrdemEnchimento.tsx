@@ -9,8 +9,8 @@ import {
   Tooltip,
 } from "antd";
 import { useState } from "react";
-import ModalComponent from "../modal/ModalComponentFormSec3";
-import { FieldTimeOutlined, InfoCircleOutlined } from "@ant-design/icons";
+import ModalComponent from "../modal/ModalComponentOrdemRotulagem";
+import { FieldTimeOutlined, InfoCircleOutlined,UserOutlined } from "@ant-design/icons";
 
 interface IordemEnchimento {
   referencia: string;
@@ -63,7 +63,7 @@ const referênciasFormulário = [
   },
 ];
 
-const FormularioSeccaoTres = () => {
+const FormularioOrdemEnchimento = () => {
   let prevEncomenda = { Encomenda: {} };
   const [ordemEnchimento, setOrdemEnchimento] = useState<IordemEnchimento>({
     referencia: " ",
@@ -126,9 +126,9 @@ const FormularioSeccaoTres = () => {
 
   const DataAtual: any = DataFunc();
 
-  const [horaInicio, setHoraInicio] = useState();
+  const [horaInicio, setHoraInicio] = useState<any>();
   const [horaInicioState, setHoraInicioState] = useState(false);
-  const [horaFim, setHoraFim] = useState();
+  const [horaFim, setHoraFim] = useState<any>();
   const [horaFimState, setHoraFimState] = useState(false);
 
   const obterHoraInicioHandler = () => {
@@ -248,6 +248,8 @@ const FormularioSeccaoTres = () => {
             ]}
           >
             <Input
+              addonBefore={<UserOutlined/>}
+              maxLength={10}
               count={{ show: true, max: 10 }}
               placeholder="Nome do Operador"
             />
@@ -333,4 +335,4 @@ const FormularioSeccaoTres = () => {
   );
 };
 
-export default FormularioSeccaoTres;
+export default FormularioOrdemEnchimento;

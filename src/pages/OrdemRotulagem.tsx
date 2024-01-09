@@ -1,13 +1,12 @@
 import {ContentHeader} from '@components';
 import GaugeComponent from '@app/components/gauge/GaugeComponent';
-import FormularioSeccaoDois from '@app/components/form-component/formSeccao2';
-import TableComponent from '@app/components/table/TableComponentSec2';
-import TableComponentSec2 from '@app/components/table/TableComponentSec2';
+import FormularioOrdemRotulagem from '@app/components/form-component/formOrdemRotulagem';
+import TableComponentOrdemRotulagem from '@app/components/table/TableComponentOrdemRotulagem';
 
-const Secção2 = () => {
+const OrdemRotulagem = () => {
   return (
     <div>
-      <ContentHeader title="Segunda Secção da Fábrica" />
+      <ContentHeader title="Ordem Rotulagem" />
       <section className="content">
         <div className="container-fluid">
           <div className="card">
@@ -17,7 +16,7 @@ const Secção2 = () => {
             <div className="card-body">
                 <div style={{flexDirection:"row",justifyContent:"center",}}>
                   <div style={{}}>
-                    <FormularioSeccaoDois/>
+                    <FormularioOrdemRotulagem/>
                   </div>
                 </div>
             </div>
@@ -31,7 +30,7 @@ const Secção2 = () => {
               <h3 className="card-title">Ordens de Rotulagem</h3>
             </div>
             <div className="card-body">
-              <TableComponentSec2/>
+              <TableComponentOrdemRotulagem/>
             </div>
           </div>
         </div>
@@ -56,7 +55,7 @@ const Secção2 = () => {
   );
 };
 
-export default Secção2;
+export default OrdemRotulagem;
 
 
 /*

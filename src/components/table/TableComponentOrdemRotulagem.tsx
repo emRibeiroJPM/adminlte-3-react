@@ -14,12 +14,12 @@ interface TipoDeDados {
   Lote: any;
 }
 
-function TableComponentSec3() {
+function TableComponentOrdemRotulagem() {
   const [dadosObtidos, setDadosObtidos] = useState<TipoDeDados[]>([]);
 
   const obtencaoDados = () => {
     //dados do tipo Date,scale
-    fetch("http://localhost:3000/ordensEnchimento")
+    fetch("http://localhost:3000/ordensRotulagem")
       .then((response) => response.json())
       .then((json) => setDadosObtidos(json))
       .catch((error) => {
@@ -33,48 +33,44 @@ function TableComponentSec3() {
   const data = {
     columns: [
       {
-        label: "Id",
-        field: "ordemEncId",
+        label: "formId",
+        field: "formId",
       },
       {
-        label: "Referencia",
-        field: "Referencia",
-      },
-      {
-        label: "Lote",
-        field: "Lote",
-      },
-      {
-        label: "Tipo Embalagem",
+        label: "TipoEmbalagem",
         field: "TipoEmbalagem",
-      },
-      {
-        label: "Lote Embalagem",
-        field: "LoteEmbalagem",
-      },
-      {
-        label: "Tipo Tampa",
-        field: "TipoTampa",
-      },
-      {
-        label: "Lote Tampa",
-        field: "LoteTampa",
       },
       {
         label: "Operador",
         field: "Operador",
       },
       {
-        label: "Hora Início",
-        field: "HoraInicio",
+        label: "Referencia",
+        field: "Referencia",
       },
       {
-        label: "Hora Fim",
-        field: "HoraFim",
+        label: "QtdPaletes",
+        field: "QtdPaletes",
       },
       {
-        label: "Máquina Enchimento",
-        field: "MaquinaEnchimento",
+        label: "Cliente",
+        field: "Cliente",
+      },
+      {
+        label: "DataInicio",
+        field: "DataInicio",
+      },
+      {
+        label: "DataFim",
+        field: "DataFim",
+      },
+      {
+        label: "QtdProdutosPalete",
+        field: "QtdProdutosPalete",
+      },
+      {
+        label: "Lote",
+        field: "Lote",
       },
     ],
     rows: dadosObtidos,
@@ -83,4 +79,4 @@ function TableComponentSec3() {
   return <MDBDataTable striped data={data} />;
 }
 
-export default TableComponentSec3;
+export default TableComponentOrdemRotulagem;

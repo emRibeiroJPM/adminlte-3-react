@@ -1,4 +1,3 @@
-import React, { ReactNode } from 'react';
 import {useSelector} from 'react-redux';
 import {Link} from 'react-router-dom';
 import {MenuItem} from '@components';
@@ -25,18 +24,23 @@ export const MENU: IMenuItem[] = [
     icon: 'fas fa-industry nav-icon',
     children: [
       {
-        name: 'Estado Tanques',
-        icon: 'fas fa-cogs nav-icon',
+        name: ' Estado Tanques',
+        icon: 'fas fa-solid fa-water',
         path: '/estadoTanques'
       },
       {
-        name: 'Ordem Enchimento',
-        icon: 'fas fa-cogs nav-icon',
+        name: ' Controlo Qualidade',
+        icon: 'fas fa-solid fa-flask',
+        path: '/amostrasControloQualidade'
+      },
+      {
+        name: ' Ordem Enchimento',
+        icon: 'fas fa-solid fa-fill',
         path: '/ordemEnchimento'
       },
       {
-        name: 'Ordem Rotulagem',
-        icon: 'fas fa-cogs nav-icon',
+        name: ' Ordem Rotulagem',
+        icon: 'fas fa-solid fa-tag',
         path: '/ordemRotulagem'
       },
 

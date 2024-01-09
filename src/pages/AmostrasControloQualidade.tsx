@@ -1,23 +1,22 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React from 'react';
 import {ContentHeader} from '@components';
-import FormularioSeccaoTres from '@app/components/form-component/formSeccao3';
-import TableComponentSec3 from '@app/components/table/TableComponentSec3';
+import FormularioAmostrasQA from '@app/components/form-component/formAmostrasQA';
+import TableComponentAmostrasControloQualidade from '@app/components/table/TableComponentAmostrasControloQualidade';
 
-const Secção3 = () => {
+const AmostrasControloQualidade = () => {
   return (
     <div>
-      <ContentHeader title="Terceira Secção da Fábrica" />
+      <ContentHeader title="Controlo de Qualidade" />
       <section className="content">
         <div className="container-fluid">
           <div className="card">
             <div className="card-header">
-              <h3 className="card-title">Ordem Enchimento</h3>
+              <h3 className="card-title">Amostra Controlo de Qualidade</h3>
               <div className="card-tools">
               </div>
             </div>
             <div className="card-body">
-              <FormularioSeccaoTres/>
+              <FormularioAmostrasQA/>
             </div>
           </div>
         </div>
@@ -26,12 +25,12 @@ const Secção3 = () => {
         <div className="container-fluid">
           <div className="card">
             <div className="card-header">
-              <h3 className="card-title">Ordens de Enchimento</h3>
+              <h3 className="card-title">Historial Amostras</h3>
               <div className="card-tools">
               </div>
             </div>
             <div className="card-body">
-            <TableComponentSec3/>
+            
             </div>
           </div>
         </div>
@@ -40,4 +39,4 @@ const Secção3 = () => {
   );
 };
 
-export default Secção3;
+export default AmostrasControloQualidade;
