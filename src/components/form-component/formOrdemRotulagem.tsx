@@ -264,7 +264,7 @@ const FormularioOrdemRotulagem = () => {
             <InputNumber min={1} placeholder="1"/>
           </Form.Item>
           <Form.Item label="Submeter">
-            <Button type="primary" htmlType="submit">
+            <Button className="" htmlType="submit">
               Submeter
             </Button>
           </Form.Item>

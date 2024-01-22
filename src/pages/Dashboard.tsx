@@ -2,23 +2,27 @@ import {SmallBox} from '@app/components';
 import {ContentHeader} from '@components';
 import LineChart from '@app/components/line-chart/LineChart';
 import TableComponent from '@app/components/table/TableComponent';
-
+import CardDisponibilidade from '@app/components/CardDisponibilidade/CardDisponibilidade';
+import CardPerformance from '@app/components/CardPerformance/CardPerformance';
+import CardQualidade from '@app/components/CardQualidade/CardQualidade';
+import LineChartOEE from '@app/components/line-chart/LineChartOEE';
+import ArraySwapper from '@app/components/line-chart/OEEchart';
 
 const Dashboard = () => {
   return (
     <div>
       <ContentHeader title="Dashboard" />
       <section className="content">
-        <div className="container-fluid">
+        <div className="container-fluid mb-5">
           <div style={{display:'flex',flexDirection:'row',justifyContent:'space-evenly'}}>
             <div className="col-lg-3 col-6">
-              <SmallBox type='success' count={40} title='Secção 1' navigateTo='/primeira-seccao' />
+              <CardDisponibilidade/>
             </div>
             <div className="col-lg-3 col-6">
-              <SmallBox type='success' count={100} title='Secção 2' navigateTo='/segunda-seccao'/>
+              <CardPerformance/>
             </div>
             <div className="col-lg-3 col-6">
-              <SmallBox type='success' count={60} title='Secção 3' navigateTo='/terceira-seccao' />
+              <CardQualidade/>
             </div>
           </div>
         </div>
@@ -27,12 +31,12 @@ const Dashboard = () => {
         <div className="container-fluid">
           <div className="card">
             <  div className="card-header">
-              <h3 className="card-title">Status Gerais</h3>
+              <h3 className="card-title">Overall Equipment Effectiveness</h3>
               <div className="card-tools">
               </div>
             </div>
             <div className="card-body">
-              <LineChart/>
+              <ArraySwapper/>
             </div>
           </div>
         </div>

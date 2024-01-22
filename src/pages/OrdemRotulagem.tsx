@@ -35,7 +35,15 @@ const OrdemRotulagem = () => {
           </div>
         </div>
       </section>
-      <section className="content">
+    </div>
+  );
+};
+
+export default OrdemRotulagem;
+
+
+/*
+ <section className="content">
         <div className="container-fluid">
           <div className="card">
             <div className="card-header">
@@ -51,13 +59,4 @@ const OrdemRotulagem = () => {
           </div>
         </div>
       </section>
-    </div>
-  );
-};
-
-export default OrdemRotulagem;
-
-
-/*
-
 */

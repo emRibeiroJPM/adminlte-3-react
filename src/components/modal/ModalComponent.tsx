@@ -79,7 +79,7 @@ function ModalComponent({ abrirModal, embalagem }: result) {
 
   return (
     <>
-      <Modal title="" open={isOpen} onOk={handleOK} onCancel={handleCancel}>
+      <Modal  title="" open={isOpen} onOk={handleOK} onCancel={handleCancel}>
         <h4>Confirma que os seguintes dados estão corretos:</h4>
         <br />
         <p>

@@ -111,7 +111,7 @@ function PDFcomponent(props: infoPDF) {
         <CodigoQR {...props} />
       </div>
       <div>
-        <Button type="primary">
+        <Button>
           <PDFDownloadLink
             document={pdfDocument(props)}
             fileName={`Form-${dataAtual}.pdf`}

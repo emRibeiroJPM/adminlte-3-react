@@ -19,6 +19,7 @@ function EscolherData({ funcaoParaOK, funcaoParaOnChange }: datePickerProps) {
     <>
       <Space direction="vertical" size={12}>
         <RangePicker
+          placeholder={["Data Inicio","Data Fim"]}
           showTime={{ format: "HH:mm" }}
           format="YYYY-MM-DD HH:mm"
           onChange={funcaoParaOnChange}

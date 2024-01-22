@@ -33,8 +33,8 @@ function TableComponentOrdemRotulagem() {
   const data = {
     columns: [
       {
-        label: "formId",
-        field: "formId",
+        label: "Id",
+        field: "ordemRotId",
       },
       {
         label: "TipoEmbalagem",

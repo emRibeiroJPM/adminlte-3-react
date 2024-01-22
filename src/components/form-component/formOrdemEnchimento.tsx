@@ -263,7 +263,6 @@ const FormularioOrdemEnchimento = () => {
           >
             <Flex gap="middle">
               <Button
-                type="primary"
                 shape="circle"
                 onClick={obterHoraInicioHandler}
               >
@@ -288,7 +287,6 @@ const FormularioOrdemEnchimento = () => {
           >
             <Flex gap="middle">
               <Button
-                type="primary"
                 shape="circle"
                 onClick={obterHoraFimHandler}
               >
@@ -320,7 +318,7 @@ const FormularioOrdemEnchimento = () => {
             </Radio.Group>
           </Form.Item>
           <Form.Item label="Submeter">
-            <Button type="primary" htmlType="submit">
+            <Button htmlType="submit">
               Submeter
             </Button>
           </Form.Item>

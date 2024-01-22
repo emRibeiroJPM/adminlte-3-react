@@ -7,14 +7,16 @@ import {
   Select,
   Tooltip,
   DatePicker,
-  Slider
+  Slider,
+  Row,
+  Checkbox,
+  Col
 } from "antd";
 import { useState } from "react";
 import ModalComponent from "../modal/ModalComponentAmostraQA";
 import EscolherData from "./date-picker";
 import { DatePickerProps, RangePickerProps } from "antd/es/date-picker";
-import {UserOutlined} from "@ant-design/icons"
-
+import { UserOutlined } from "@ant-design/icons";
 
 interface IamostraControloQualidade {
   referencia: string;
@@ -71,24 +73,24 @@ const referênciasFormulário = [
 ];
 
 const FormularioAmostrasQA = () => {
-
-  const {TextArea} = Input;
+  const { TextArea } = Input;
   let prevEncomenda = { Encomenda: {} };
-  const [ordemEnchimento, setOrdemEnchimento] = useState<IamostraControloQualidade>({
-    referencia: "",
-    lote: 0,
-    dataFabrico: "",
-    dataInicio: "",
-    dataFim: "",
-    ListaEspecificacoes: "",
-    metodos: "",
-    intervaloDeAceitacao: "",
-    resultados: "",
-    avaliacaoConformidade: "",
-    operadorAnalisa: "",
-    operadorValida: "",
-    observacoes: ""
-  });
+  const [ordemEnchimento, setOrdemEnchimento] =
+    useState<IamostraControloQualidade>({
+      referencia: "",
+      lote: 0,
+      dataFabrico: "",
+      dataInicio: "",
+      dataFim: "",
+      ListaEspecificacoes: "",
+      metodos: "",
+      intervaloDeAceitacao: "",
+      resultados: "",
+      avaliacaoConformidade: "",
+      operadorAnalisa: "",
+      operadorValida: "",
+      observacoes: "",
+    });
   const [form] = Form.useForm();
   const [modalAberto, setModalAberto] = useState(false);
 
@@ -119,13 +121,13 @@ const FormularioAmostrasQA = () => {
       );
   };
 
-  const onOk = (dateString: [string, string] | string| any) => {
-    console.log('onOk: ', dateString.toLocaleString());
+  const onOk = (dateString: [string, string] | string | any) => {
+    console.log("onOk: ", dateString.toLocaleString());
   };
 
-  const onChange = (dateString: [string, string] | string | any) =>{
-    console.log("this is onChange",dateString);
-  }
+  const onChange = (dateString: [string, string] | string | any) => {
+    console.log("this is onChange", dateString);
+  };
   /////////////////////////////////////////////////////
   //Introduzir abaixo as propriedades e funcoes do Date Picker
   /////////////////////////////////////////////////////
@@ -150,8 +152,6 @@ const FormularioAmostrasQA = () => {
   /////////////////////////////////////////////////////
   //Introduzir acima as propriedades e funcoes do Date Picker
   /////////////////////////////////////////////////////
-
-
 
   return (
     <>
@@ -198,11 +198,17 @@ const FormularioAmostrasQA = () => {
           <Form.Item
             label="Data de Fabrico"
             name={["Encomenda", "dataFabrico"]}
-            rules={[{ required: true, message: "Introduza a hora de fabrico no qual foi produzida a amostra" }]}
+            rules={[
+              {
+                required: true,
+                message:
+                  "Introduza a hora de fabrico no qual foi produzida a amostra",
+              },
+            ]}
           >
             <DatePicker
-              showTime={{format:'HH:mm'}}
-              format='YYYY-MM-DD HH:mm'
+              showTime={{ format: "HH:mm" }}
+              format="YYYY-MM-DD HH:mm"
               onChange={onChange}
               onOk={onOk}
               placeholder="Data de Fabrico da Amostra"
@@ -211,43 +217,118 @@ const FormularioAmostrasQA = () => {
           <Form.Item
             label="Data de Analise"
             name={["Encomenda", "DataInicioFim"]}
-            rules={[
-            ]}
+            rules={[]}
           >
-            <EscolherData funcaoParaOK={onOkAnalise} funcaoParaOnChange={onChangeAnalise} />
+            <EscolherData
+              funcaoParaOK={onOkAnalise}
+              funcaoParaOnChange={onChangeAnalise}
+            />
           </Form.Item>
-          <Form.Item label="Lista de Especificações:" name={["Encomenda", "listaEspecificações"]}>
+          <Form.Item
+            label="Lista de Especificações:"
+            name={["Encomenda", "listaEspecificações"]}
+          >
+          <Checkbox.Group style={{ width: '100%' }} onChange={()=>{}}>
+          <Row>
+            <Col span={8}>
+              <Checkbox value="SpecA">Especificação A</Checkbox>
+            </Col>
+            <Col span={8}>
+              <Checkbox value="SpecB">Especificação B</Checkbox>
+            </Col>
+            <Col span={8}>
+              <Checkbox value="SpecC">Especificação C</Checkbox>
+            </Col>
+            <Col span={8}>
+              <Checkbox value="SpecD">Especificação D</Checkbox>
+            </Col>
+            <Col span={8}>
+              <Checkbox value="SpecE">Especificação E</Checkbox>
+            </Col>
+            <Col span={8}>
+              <Checkbox value="SpecF">Especificação F</Checkbox>
+            </Col>
+          </Row>
+          </Checkbox.Group>
           </Form.Item>
-          <Form.Item label="Métodos:" name={["Encomenda", "metodos"]}>
-
+          <Form.Item
+            label="Métodos:"
+            name={["Encomenda", "metodos"]}
+          ></Form.Item>
+          <Form.Item
+            label="Intervalo de aceitação pH:"
+            name={["Encomenda", "intervaloAceitacao"]}
+          >
+            <Slider
+              marks={{
+                1: {
+                  style: {
+                    color: "#E1691A",
+                  },
+                  label: <strong>pH=1</strong>,
+                },
+                7: {
+                  style: {
+                    color: "#3EAA42",
+                  },
+                  label: <strong>pH=7</strong>,
+                },
+                14: {
+                  style: {
+                    color: "#3E2B96",
+                  },
+                  label: <strong>pH=14</strong>,
+                },
+              }}
+              range={{ draggableTrack: true }}
+              step={0.1}
+              min={0}
+              max={14}
+              defaultValue={[4, 14]}
+              onChange={onChange}
+            />
           </Form.Item>
-          <Form.Item label="Intervalo de aceitação pH:" name={["Encomenda", "intervaloAceitacao"]}>
-            <Slider range min={0} max={14} />
+          <Form.Item
+            label="Resultado:"
+            name={["Encomenda", "resultado"]}
+          ></Form.Item>
+          <Form.Item
+            label="Avaliação da conformidade:"
+            name={["Encomenda", "avaliacao"]}
+          >
+            <Radio.Group name="radiogroup" defaultValue={1}>
+              <Radio value={"conforme"}>Conforme</Radio>
+              <Radio value={"naConforme"}>Não Conforme</Radio>
+            </Radio.Group>
           </Form.Item>
-          <Form.Item label="Resultado:" name={["Encomenda", "resultado"]}>
-
-          </Form.Item>
-          <Form.Item label="Avaliação da conformidade:" name={["Encomenda", "avaliacao"]}>
-          <Radio.Group name="radiogroup" defaultValue={1}>
-            <Radio value={"conforme"}>Conforme</Radio>
-            <Radio value={"naConforme"}>Não Conforme</Radio>
-          </Radio.Group>
-          </Form.Item>
-          <Form.Item label="Analisador:" name={["Encomenda", "operadorAnalisa"]}>
-            <Input addonBefore={<UserOutlined />} maxLength={10}  count={{show:true,max:10}} placeholder="Operador que analisa"/>
+          <Form.Item
+            label="Analisador:"
+            name={["Encomenda", "operadorAnalisa"]}
+          >
+            <Input
+              addonBefore={<UserOutlined />}
+              maxLength={10}
+              count={{ show: true, max: 10 }}
+              placeholder="Operador que analisa"
+            />
           </Form.Item>
           <Form.Item label="Validador:" name={["Encomenda", "operadorValida"]}>
-          <Input addonBefore={<UserOutlined />} maxLength={10} count={{show:true,max:10}} placeholder="Operador que valida"/>
+            <Input
+              addonBefore={<UserOutlined />}
+              maxLength={10}
+              count={{ show: true, max: 10 }}
+              placeholder="Operador que valida"
+            />
           </Form.Item>
           <Form.Item label="Observações:" name={["Encomenda", "observacoes"]}>
-          <TextArea
-            showCount
-            autoSize={{minRows:3,maxRows:10}}
-            allowClear
-            maxLength={255}
-            placeholder="Observações"
-            style={{ height: 120, resize: 'none' }}
-          />
+            <TextArea
+              showCount
+              autoSize={{ minRows: 3, maxRows: 10 }}
+              allowClear
+              maxLength={255}
+              placeholder="Observações"
+              style={{ height: 120, resize: "none" }}
+            />
           </Form.Item>
           <Form.Item label="Submeter">
             <Button type="primary" htmlType="submit">
@@ -266,5 +347,3 @@ const FormularioAmostrasQA = () => {
 };
 
 export default FormularioAmostrasQA;
-
-
