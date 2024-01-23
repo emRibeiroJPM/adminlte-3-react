@@ -96,33 +96,42 @@ function ModalComponent({ abrirModal, ordemRotulagem }: result) {
           <b>Lote ⇒</b> {ordemRotulagem.lote}
         </p>
         <p>
-          <b>Tipo de Embalagem ⇒ </b>
-          {ordemRotulagem.tipoEmbalagem}
-        </p>
-        <p>
-          <b>Lote de Embalagem ⇒</b> {ordemRotulagem.loteEmbalagem}
-        </p>
-        <p>
-          <b>Tipo de Tampa ⇒</b> {ordemRotulagem.tipoTampa}
-        </p>
-        <p>
-          <b>Lote Tampa ⇒</b> {ordemRotulagem.loteTampa}
-        </p>
-        <p>
-          <b>Operador ⇒</b> {ordemRotulagem.operador}
+          <b>Data de Fabrico ⇒ </b>
+          {ordemRotulagem.dataFabrico}
         </p>
         <p>
           <b>
             Data ⇒&emsp;<em>Inicio: </em>
           </b>
-          {ordemRotulagem.horaInicio}
+          {ordemRotulagem.dataInicio}
           <b>
             <em>&emsp;Fim: </em>
           </b>{" "}
-          {ordemRotulagem.horaFim}{" "}
+          {ordemRotulagem.dataFim}{" "}
         </p>
         <p>
-          <b>Maquina de Enchimento ⇒</b> {ordemRotulagem.maquinaEnchimento}
+          <b>Lista de Especificaçoes ⇒</b> {ordemRotulagem.ListaEspecificacoes}
+        </p>
+        <p>
+          <b>Metodos ⇒</b> {ordemRotulagem.metodos}
+        </p>
+        <p>
+          <b>Intervalo de aceitaçao ⇒</b> {ordemRotulagem.intervaloDeAceitacao}
+        </p>
+        <p>
+          <b>Resultados ⇒</b> {ordemRotulagem.resultados}
+        </p>
+        <p>
+          <b>Avaliaçao Conformidade ⇒</b> {ordemRotulagem.avaliacaoConformidade}
+        </p>
+        <p>
+          <b>Operador que analisa ⇒</b> {ordemRotulagem.operadorAnalisa}
+        </p>
+        <p>
+          <b>Operador que Valida ⇒</b> {ordemRotulagem.operadorValida}
+        </p>
+        <p>
+          <b>Observaçoes ⇒</b> {ordemRotulagem.observacoes}
         </p>
       </Modal>
       {toast ? (

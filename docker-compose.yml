@@ -1,0 +1,14 @@
+version: '3'
+services:
+  egiboardfrontend:
+    container_name: egiboardFrontend
+    hostname: egiboardFrontend
+    restart: unless-stopped
+    build: .
+    ports:
+      - "5173:5173"
+    networks:
+      - composekafka_Shoopfloor
+networks:
+  composekafka_Shoopfloor:
+    external: true
