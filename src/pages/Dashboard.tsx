@@ -5,13 +5,33 @@ import CardDisponibilidade from '@app/components/CardDisponibilidade/CardDisponi
 import CardPerformance from '@app/components/CardPerformance/CardPerformance';
 import CardQualidade from '@app/components/CardQualidade/CardQualidade';
 import OEE from '@app/components/line-chart/OEEchart';
+import { ArrayAttribute } from '@antv/g2/lib/api/types';
+
+/*
+{
+  machineId: '9774acb6-c882-451b-91a4-6043c60691e6',
+  timestamp: '1706025863951',
+  runTime: '27',
+  actualSpeed: '18',
+  actualGoodProduct: '8'
+}
+  */
+interface arrayProps  {
+  machineId: 'string',
+  timestamp: 'string'| number,
+  runTime: 'string'| number,
+  actualSpeed: 'string' | number,
+  actualGoodProduct: 'string' | number
+}
 
 const Dashboard = () => {
-
-  const [array, setArray] = useState(
+  
+  const [array, setArray] = useState<arrayProps | number[] | any>(
     Array.from({ length: 20 }, (_, index) => index + 1)
   );
+  const [qualityKPI,setQualityKPI] = useState<any>(array);
 
+  
   useEffect(() => {
     // Create an EventSource for the SSE stream
     const eventSource = new EventSource(
@@ -22,7 +42,7 @@ const Dashboard = () => {
     eventSource.addEventListener("message", (event) => {
       const eventData = JSON.parse(event.data);
         console.log(eventData);
-      setArray((prevArray) => {
+      setArray((prevArray:any) => {
         // Create a new array by shifting elements one position to the right
         const newArray = [...prevArray];
         const lastElement = newArray.pop(); // Remove the last element
@@ -31,6 +51,7 @@ const Dashboard = () => {
       });
     });
     // Clean up the EventSource when the component is unmounted
+    setQualityKPI(array);
     return () => {
       eventSource.close();
     };
@@ -43,13 +64,13 @@ const Dashboard = () => {
         <div className="container-fluid mb-5">
           <div style={{display:'flex',flexDirection:'row',justifyContent:'space-evenly'}}>
             <div className="col-lg-3 col-6">
-              <CardDisponibilidade />
+              <CardDisponibilidade availability={qualityKPI.runTime} />
             </div>
             <div className="col-lg-3 col-6">
-              <CardPerformance/>
+              <CardPerformance performance={qualityKPI.actualSpeed}/>
             </div>
             <div className="col-lg-3 col-6">
-              <CardQualidade/>
+              <CardQualidade quality={75}/>
             </div>
           </div>
         </div>

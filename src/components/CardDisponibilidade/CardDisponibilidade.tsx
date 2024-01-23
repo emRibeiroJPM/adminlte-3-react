@@ -14,16 +14,20 @@ function CardDisponibilidade({availability=15}:props) {
   const [percentagem, setPercentagem] = useState(availability);
 
   useEffect(() => {
-    if (percentagem <= 100) {
+    setPercentagem(availability);
+    
+    if (percentagem >= 51 && percentagem <= 100) {
       setCor("blue");
-      if (percentagem <= 50) {
-        setCor("yellow");
-        if (percentagem <= 20) {
-          setCor("red");
-        }
-      }
     }
-  }, []);
+    
+    if (percentagem >= 21 && percentagem <= 50) {
+      setCor("yellow");
+    }
+    
+    if (percentagem >= 0 && percentagem <= 20) {
+      setCor("red");
+    }
+  }, [availability]);
   return (
     <Card className="max-w-sm mx-auto shadow-2xl bg-white rounded-lg">
       <Flex className="space-x-5 flex-wrap" justifyContent="center">

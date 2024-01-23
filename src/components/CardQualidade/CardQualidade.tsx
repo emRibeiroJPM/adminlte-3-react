@@ -4,21 +4,30 @@ import { useState, useEffect } from "react";
 interface corProps {
   cor: "red" | "blue" | "yellow" | "gray";
 }
-function CardQualidade() {
+
+interface props {
+  quality?:number
+}
+
+function CardQualidade({quality=75}:props) {
   const [cor, setCor] = useState<corProps["cor"]>("gray");
-  const [percentagem, setPercentagem] = useState(75);
+  const [percentagem, setPercentagem] = useState(quality);
 
   useEffect(() => {
-    if (percentagem <= 100) {
+    setPercentagem(quality);
+    
+    if (percentagem >= 51 && percentagem <= 100) {
       setCor("blue");
-      if (percentagem <= 50) {
-        setCor("yellow");
-        if (percentagem <= 20) {
-          setCor("red");
-        }
-      }
     }
-  }, []);
+    
+    if (percentagem >= 21 && percentagem <= 50) {
+      setCor("yellow");
+    }
+    
+    if (percentagem >= 0 && percentagem <= 20) {
+      setCor("red");
+    }
+  }, [quality]);
 
   return (
     <Card className="max-w-sm mx-auto shadow-2xl bg-white rounded-lg">
