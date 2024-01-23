@@ -29,7 +29,6 @@ const Dashboard = () => {
   const [array, setArray] = useState<arrayProps | number[] | any>(
     Array.from({ length: 20 }, (_, index) => index + 1)
   );
-  const [qualityKPI,setQualityKPI] = useState<any>(array);
 
   
   useEffect(() => {
@@ -51,7 +50,6 @@ const Dashboard = () => {
       });
     });
     // Clean up the EventSource when the component is unmounted
-    setQualityKPI(array);
     return () => {
       eventSource.close();
     };
@@ -64,13 +62,13 @@ const Dashboard = () => {
         <div className="container-fluid mb-5">
           <div style={{display:'flex',flexDirection:'row',justifyContent:'space-evenly'}}>
             <div className="col-lg-3 col-6">
-              <CardDisponibilidade availability={qualityKPI.runTime} />
+              <CardDisponibilidade availability={array.runTime} />
             </div>
             <div className="col-lg-3 col-6">
-              <CardPerformance performance={qualityKPI.actualSpeed}/>
+              <CardPerformance performance={array.actualSpeed}/>
             </div>
             <div className="col-lg-3 col-6">
-              <CardQualidade quality={75}/>
+              <CardQualidade quality={array.actualGoodProduct}/>
             </div>
           </div>
         </div>
