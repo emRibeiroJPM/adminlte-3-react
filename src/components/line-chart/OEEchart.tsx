@@ -1,8 +1,12 @@
-import { AreaChart, Card, Title, EventProps } from "@tremor/react";
-import { useState, useEffect, useRef } from "react";
+import { AreaChart,} from "@tremor/react";
+import { useState, useEffect} from "react";
 
-const ArraySwapper = () => {
-  // Initialize state with an array of 10 elements
+interface dadosOEE {
+  dados: number[]
+}
+
+const OEE = ({dados}:dadosOEE) => {
+/*
   const [array, setArray] = useState(
     Array.from({ length: 20 }, (_, index) => index + 1)
   );
@@ -25,18 +29,17 @@ const ArraySwapper = () => {
         return newArray;
       });
     });
-
     // Clean up the EventSource when the component is unmounted
     return () => {
       eventSource.close();
     };
   }, []); // Empty dependency array means this effect runs once after the initial render
-
+*/
   return (
         <AreaChart
           className="h-72 mt-4 ease-in"
           showGridLines={false}
-          data={array}
+          data={dados}
           index="timestamp"
           showYAxis={true}
           maxValue={200}
@@ -50,4 +53,4 @@ const ArraySwapper = () => {
   );
 };
 
-export default ArraySwapper;
+export default OEE;

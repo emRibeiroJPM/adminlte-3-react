@@ -5,9 +5,13 @@ interface corProps {
   cor: "red" | "blue" | "yellow" | "gray";
 }
 
-function CardDisponibilidade() {
+interface props {
+  availability?:number 
+}
+
+function CardDisponibilidade({availability=15}:props) {
   const [cor, setCor] = useState<corProps["cor"]>("gray");
-  const [percentagem, setPercentagem] = useState(15);
+  const [percentagem, setPercentagem] = useState(availability);
 
   useEffect(() => {
     if (percentagem <= 100) {

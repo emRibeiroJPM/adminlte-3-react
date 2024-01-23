@@ -1,14 +1,41 @@
-import {SmallBox} from '@app/components';
+import { useState,useEffect } from 'react';
 import {ContentHeader} from '@components';
-import LineChart from '@app/components/line-chart/LineChart';
 import TableComponent from '@app/components/table/TableComponent';
 import CardDisponibilidade from '@app/components/CardDisponibilidade/CardDisponibilidade';
 import CardPerformance from '@app/components/CardPerformance/CardPerformance';
 import CardQualidade from '@app/components/CardQualidade/CardQualidade';
-import LineChartOEE from '@app/components/line-chart/LineChartOEE';
-import ArraySwapper from '@app/components/line-chart/OEEchart';
+import OEE from '@app/components/line-chart/OEEchart';
 
 const Dashboard = () => {
+
+  const [array, setArray] = useState(
+    Array.from({ length: 20 }, (_, index) => index + 1)
+  );
+
+  useEffect(() => {
+    // Create an EventSource for the SSE stream
+    const eventSource = new EventSource(
+      "http://localhost:7070/api/v1/eventoTemporizado/receber"
+    );
+
+    // Listen for messages from the SSE stream
+    eventSource.addEventListener("message", (event) => {
+      const eventData = JSON.parse(event.data);
+        console.log(eventData);
+      setArray((prevArray) => {
+        // Create a new array by shifting elements one position to the right
+        const newArray = [...prevArray];
+        const lastElement = newArray.pop(); // Remove the last element
+        newArray.unshift(eventData); // Add the new data object to the beginning
+        return newArray;
+      });
+    });
+    // Clean up the EventSource when the component is unmounted
+    return () => {
+      eventSource.close();
+    };
+  }, []); 
+
   return (
     <div>
       <ContentHeader title="Dashboard" />
@@ -16,7 +43,7 @@ const Dashboard = () => {
         <div className="container-fluid mb-5">
           <div style={{display:'flex',flexDirection:'row',justifyContent:'space-evenly'}}>
             <div className="col-lg-3 col-6">
-              <CardDisponibilidade/>
+              <CardDisponibilidade />
             </div>
             <div className="col-lg-3 col-6">
               <CardPerformance/>
@@ -36,7 +63,7 @@ const Dashboard = () => {
               </div>
             </div>
             <div className="card-body">
-              <ArraySwapper/>
+              <OEE dados={array}/>
             </div>
           </div>
         </div>
